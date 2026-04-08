@@ -4,6 +4,7 @@
 /examples/PacMan/coverage/*
 !/coverage/coverage-summary.json
 /examples/PacMan/gamestatelogger/server/JSONfiles/*.json
+/examples/PacMan/package-lock.json
 
 ## Ignores for Tic Tac Toe
 /examples/TicTacToe/server/package-lock.json
