@@ -2,9 +2,6 @@ import { GameStateLogger } from '../gamestatelogger/lib/gamestatelogger.js';
 
 let gameCoordinator;
 
-
-var ID = 0;
-
 class Ghost {
   constructor(scaledTileSize, mazeArray, pacman, name, level, characterUtil, blinky) {
     this.scaledTileSize = scaledTileSize;
@@ -1220,7 +1217,7 @@ class GameCoordinator {
       this.firstGame = false;
       this.init();
     }
-    this.GameStateLogger.logKeyDownEvent(ID, "Game started", "startbutton", this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logKeyDownEvent(this.GameStateLogger.ID, "Game started", "startbutton", this.gameEngine.frameId, this.points);
     
     this.startGameplay(true);
   }
@@ -1780,8 +1777,8 @@ class GameCoordinator {
   }
 
   handleGameEnded (event) {
-    this.GameStateLogger.logWindowClose(ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
-    ID++;
+    this.GameStateLogger.logWindowClose(this.GameStateLogger.ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
+    this.GameStateLogger.ID++;
   }
   /**
    * Register listeners for touchstart and touchend to handle mobile device swipes
@@ -1848,7 +1845,7 @@ class GameCoordinator {
     } else if (this.movementKeys[e.keyCode]) {
       this.changeDirection(this.movementKeys[e.keyCode]);
     }
-    this.GameStateLogger.logKeyDownEvent(ID, e.key, this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logKeyDownEvent(this.GameStateLogger.ID, e.key, this.gameEngine.frameId, this.points);
   }
 
   /**
@@ -1856,7 +1853,7 @@ class GameCoordinator {
    * @param {Event} e - The direction of the swipe
    */
   handleSwipe(e) {
-    this.GameStateLogger.logClickEvent(ID, e.detail, this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logClickEvent(this.GameStateLogger.ID, e.detail, this.gameEngine.frameId, this.points);
 
     const { direction } = e.detail;
     this.changeDirection(direction);
@@ -1993,8 +1990,8 @@ class GameCoordinator {
    * Displays GAME OVER text and displays the menu so players can play again
    */
   gameOver() {
-    this.GameStateLogger.logGameResult(ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
-    ID++;
+    this.GameStateLogger.logGameResult(this.GameStateLogger.ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
+    this.GameStateLogger.ID++;
     localStorage.setItem('highScore', this.highScore);
 
     new Timer(() => {
@@ -2129,7 +2126,7 @@ class GameCoordinator {
                   new Timer(() => {
                     this.mazeCover.style.visibility = 'hidden';
                     this.level += 1;
-                    this.GameStateLogger.logNewLevel(ID, this.level, this.gameEngine.frameId, this.points);
+                    this.GameStateLogger.logNewLevel(this.GameStateLogger.ID, this.level, this.gameEngine.frameId, this.points);
                     this.allowKeyPresses = true;
                     this.entityList.forEach((entity) => {
                       const entityRef = entity;

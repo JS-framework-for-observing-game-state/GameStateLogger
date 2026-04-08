@@ -1,21 +1,22 @@
 export class GameStateLogger {
-   constructor(eventlog, flushSize) {
+   constructor(eventlog, flushSize, ID = (Date.now().toString(36) + Math.random().toString(36))) {
       this.EventLog = eventlog; // Array for holding tuples of eventName and eventTime, to send to server
       this.flushSize = flushSize; // Number of events to log before sending to server
+      this.ID = ID;
    }
 
 
    /**
     * Called by user of the library. Logs key down presses.
     **/
-   logKeyDownEvent(ID, event, time, points) {
+   logKeyDownEvent(ID = this.ID, event, time, points) {
       const Event = {
             ID: ID,
             eventName: event,
             eventTime: time,
             points: points,
       };
-
+      console.log("ID FOR THIS: " + this.ID);
       this.EventLog.push(Event); 
       console.log(`Logged ${Event.eventName} action. Logged at ${Event.eventTime} and has ${Event.points} points`); // Only for testing
       
@@ -30,7 +31,7 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key up releases.
     **/
-   logKeyUpEvent(ID, event, time = "n/a", points = "n/a") {
+   logKeyUpEvent(ID = this.ID, event, time = "n/a", points = "n/a") {
       const Event = {
             ID: ID,
             eventName: event,
@@ -76,7 +77,7 @@ export class GameStateLogger {
    /**
     * Log new level.
     **/
-   logNewLevel(ID, newlevel, time, points) {
+   logNewLevel(ID = this.ID, newlevel, time, points) {
       const Event = {
             ID: ID,
             level: newlevel,
@@ -97,7 +98,7 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logGameResult(ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
+   logGameResult(ID = this.ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
             gameEnd: true,
@@ -123,7 +124,7 @@ export class GameStateLogger {
     * Log when a user is closing the game window, only used when a
     * window is closed in the middle of a session (logGameResult is not the final event.)
     **/
-   logWindowClose(ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
+   logWindowClose(ID = this.ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
             eventName: event,
