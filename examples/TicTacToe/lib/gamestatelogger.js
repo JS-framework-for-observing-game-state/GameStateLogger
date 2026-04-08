@@ -54,7 +54,7 @@ export class GameStateLogger {
     * as the event(Name) and the location as the location of the initiated
     * swipe (if nescessary).
     **/
-   logClickEvent(ID, event, location, time, points) {
+   logClickEvent(ID = this.ID, event, location, time, points) {
       const Event = {
             ID: ID,
             eventName: event,

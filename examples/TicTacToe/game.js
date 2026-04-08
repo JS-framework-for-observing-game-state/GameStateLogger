@@ -33,7 +33,7 @@ restart.addEventListener('click', () => {
 })
 
 window.addEventListener('beforeunload', () => {
-    gamestatelogger.logWindowClose(undefined,"Session ended", timestep);
+    gamestatelogger.logWindowClose(undefined, "Session ended", timestep);
 });
 
 for(let i = 0; i < squares.length; i++){
