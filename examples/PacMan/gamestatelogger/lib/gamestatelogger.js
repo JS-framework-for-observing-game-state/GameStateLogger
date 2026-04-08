@@ -16,7 +16,7 @@ export class GameStateLogger {
             eventTime: time,
             points: points,
       };
-      console.log("ID FOR THIS: " + this.ID);
+
       this.EventLog.push(Event); 
       console.log(`Logged ${Event.eventName} action. Logged at ${Event.eventTime} and has ${Event.points} points`); // Only for testing
       

@@ -32,14 +32,14 @@ try {
          
          // If file does not exist, create it with the start bracket for containing objects
          if (!fs.existsSync(filePath)) {
-            fs.writeFileSync(filePath, "{", { flag: 'w' });
+            fs.writeFileSync(filePath, "", { flag: 'w' });
          }
 
          // If event ends a session, write the final data and '}' to the file and close it.
          if (v.gameEnd || v.eventName === "Session ended") {
             try {
                // Formatting: "key" : {eventinformation} }
-               let data = "\"" + key + "\":" + JSON.stringify(v) + "}";
+               let data = JSON.stringify(v);
                key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
@@ -50,7 +50,7 @@ try {
          else {
             try {
                // Formatting: "key" : {eventdata}
-               let data = "\"" + key + "\":" + JSON.stringify(v) + ",";
+               let data = JSON.stringify(v);
                key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
