@@ -112,11 +112,7 @@ export class GameStateLogger {
       console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
         and has ${Event.points} points, with ${Event.highscore} highscore`); // Only for testing
       
-      // Array is flushed and data sent, every time the array hits over 10 elements.
-      // Interval can be changed later
-      if (this.EventLog.length > this.flushSize) {
-         this.postData();
-      }
+      this.postData();
    }
    
 

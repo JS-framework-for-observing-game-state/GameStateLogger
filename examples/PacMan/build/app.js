@@ -1778,7 +1778,7 @@ class GameCoordinator {
 
   handleGameEnded (event) {
     this.GameStateLogger.logWindowClose(this.GameStateLogger.ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
-    this.GameStateLogger.ID++;
+    this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
   }
   /**
    * Register listeners for touchstart and touchend to handle mobile device swipes
@@ -1991,7 +1991,7 @@ class GameCoordinator {
    */
   gameOver() {
     this.GameStateLogger.logGameResult(this.GameStateLogger.ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
-    this.GameStateLogger.ID++;
+    this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
     localStorage.setItem('highScore', this.highScore);
 
     new Timer(() => {
