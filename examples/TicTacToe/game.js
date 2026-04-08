@@ -1,4 +1,4 @@
-import { GameStateLogger } from './lib/gamestatelogger.js';
+import { GameStateLogger } from './gamestatelogger/lib/gamestatelogger.js';
 
 var gamestatelogger = new GameStateLogger([], 10);
 

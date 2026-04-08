@@ -17,4 +17,4 @@ From `/gamestatelogger/server` run:
   node server.js
 ```
    
-Game can now be accessed at `http://127.0.0.1:8080/`, and logged events can be seen in the browser terminal, as well as the JSON file(s) logged in `gamestatelogger/server`.
+Game can now be accessed at `http://127.0.0.1:8080/`, and logged events can be seen in the browser terminal, as well as the JSON file(s) logged in `gamestatelogger/server/JSONfiles`.
