@@ -38,8 +38,6 @@
     "sinon": "^21.0.1"
   },
   "dependencies": {
-    "@duckdb/node-api": "^1.4.4-r.1",
-    "@duckdb/node-bindings-linux-x64": "^1.4.4-r.1",
     "cors": "^2.8.6",
     "express": "^5.2.1"
   }
