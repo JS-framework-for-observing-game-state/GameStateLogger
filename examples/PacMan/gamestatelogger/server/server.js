@@ -16,13 +16,19 @@ app.listen(PORT, () => {
 
 app.use(express.json());
 
+const dir = "./JSONfiles";
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
 /* Receive post data. */
 try {
    app.post('/log-data', (req, res) => {
       // Iterate over every event from the received array 
       req.body.forEach(function(v) {
          // Create string filepath associated with the event.
-         var filePath = "./JSONFILES/" + v.ID + ".json";
+         var filePath = dir + "/" + v.ID + ".json";
          
          // If file does not exist, create it with the start bracket for containing objects
          if (!fs.existsSync(filePath)) {
