@@ -6,7 +6,7 @@ export class GameStateLogger {
 
 
    /**
-    * Called by user of the library. Logs events locally. 
+    * Called by user of the library. Logs key down presses.
     **/
    logKeyDownEvent(ID, event, time, points) {
       const Event = {
@@ -24,6 +24,23 @@ export class GameStateLogger {
       if (this.EventLog.length > this.flushSize) {
          this.postData();
       }
+   }
+   
+   
+   /**
+    * Called by user of the library. Logs key up releases.
+    **/
+   logKeyUpEvent(ID, event, time = "n/a", points = "n/a") {
+      const Event = {
+            ID: ID,
+            eventName: event,
+            keyPressType: "keyUp",
+            eventTime: time,
+            points: points,
+      };
+
+      this.EventLog.push(Event);
+      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} and has ${Event.points} points`); // Only for testing
    }
 
 
@@ -77,13 +94,13 @@ export class GameStateLogger {
       }
    }
 
-
    /**
-    * Log game over. Eventname can be e.g. "Game Over"
+    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logGameOver(ID, event, time, points, highscore) {
+   logGameResult(ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
+            gameEnd: true,
             eventName: event,
             eventTime: time,
             points: points,
@@ -91,7 +108,8 @@ export class GameStateLogger {
       };
 
       this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName}. Logged at ${Event.eventTime} and has ${Event.points} points, with ${Event.highscore} highscore`); // Only for testing
+      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
+        and has ${Event.points} points, with ${Event.highscore} highscore`); // Only for testing
       
       // Array is flushed and data sent, every time the array hits over 10 elements.
       // Interval can be changed later
@@ -99,13 +117,13 @@ export class GameStateLogger {
          this.postData();
       }
    }
-
-
+   
 
    /**
-    * Log game end, e.g. call event for "Game ended by user".
+    * Log when a user is closing the game window, only used when a
+    * window is closed in the middle of a session (logGameResult is not the final event.)
     **/
-   logGameEnd(ID, event, time, points, highscore) {
+   logWindowClose(ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
             eventName: event,
@@ -115,7 +133,8 @@ export class GameStateLogger {
       };
 
       this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName}. Logged at ${Event.eventTime} and has ${Event.points} points, with ${Event.highscore} highscore`); // Only for testing
+      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} and has ${Event.points} points,
+        with ${Event.highscore} highscore`); // Only for testing
       
       // Array is flushed as player has ended the game.
       this.postData();

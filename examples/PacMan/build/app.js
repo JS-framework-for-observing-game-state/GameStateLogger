@@ -1780,7 +1780,8 @@ class GameCoordinator {
   }
 
   handleGameEnded (event) {
-    this.GameStateLogger.logGameEnd(ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
+    this.GameStateLogger.logWindowClose(ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
+    ID++;
   }
   /**
    * Register listeners for touchstart and touchend to handle mobile device swipes
@@ -1992,7 +1993,8 @@ class GameCoordinator {
    * Displays GAME OVER text and displays the menu so players can play again
    */
   gameOver() {
-    this.GameStateLogger.logGameOver(ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
+    this.GameStateLogger.logGameResult(ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
+    ID++;
     localStorage.setItem('highScore', this.highScore);
 
     new Timer(() => {

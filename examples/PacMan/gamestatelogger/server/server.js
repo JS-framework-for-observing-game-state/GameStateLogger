@@ -22,7 +22,7 @@ try {
       // Iterate over every event from the received array 
       req.body.forEach(function(v) {
          // Create string filepath associated with the event.
-         var filePath = "./" + v.ID + ".json";
+         var filePath = "./JSONFILES/" + v.ID + ".json";
          
          // If file does not exist, create it with the start bracket for containing objects
          if (!fs.existsSync(filePath)) {
@@ -30,7 +30,7 @@ try {
          }
 
          // If event ends a session, write the final data and '}' to the file and close it.
-         if (v.eventName === "Session ended") {
+         if (v.gameEnd || v.eventName === "Session ended") {
             try {
                // Formatting: "key" : {eventinformation} }
                let data = "\"" + key + "\":" + JSON.stringify(v) + "}";
