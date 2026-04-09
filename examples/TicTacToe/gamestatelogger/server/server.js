@@ -35,7 +35,6 @@ try {
          // If event ends a session, write the final data and '}' to the file and close it.
          if (v.gameEnd || v.eventName === "Session ended") {
             try {
-               // Formatting: "key" : {eventinformation} }
                let data = JSON.stringify(v);
 
 
@@ -46,9 +45,7 @@ try {
          }
          else {
             try {
-               // Formatting: "key" : {eventdata}
                let data = JSON.stringify(v);
-               key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {

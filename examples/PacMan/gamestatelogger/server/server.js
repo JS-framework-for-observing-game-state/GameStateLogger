@@ -5,9 +5,6 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
-// Key for identifying events in output JSON file
-let key = 0;
-
 app.use(cors());
 
 app.listen(PORT, () => {
@@ -38,9 +35,7 @@ try {
          // If event ends a session, write the final data and '}' to the file and close it.
          if (v.gameEnd || v.eventName === "Session ended") {
             try {
-               // Formatting: "key" : {eventinformation} }
                let data = JSON.stringify(v);
-               key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
@@ -49,9 +44,7 @@ try {
          }
          else {
             try {
-               // Formatting: "key" : {eventdata}
                let data = JSON.stringify(v);
-               key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
