@@ -1,8 +1,8 @@
 class TicTacToe {
     constructor () {
         this.squaresArr = ['', '', '',
-                        '', '', '',
-                        '', '', ''];
+                            '', '', '',
+                            '', '', ''];
         this.players = ['X', 'O']
         this.currentPlayer = this.players[0]
         this.someoneWon = false;
@@ -59,17 +59,7 @@ var valid = false;
 
 let gameInstance = new TicTacToe();
 
-const ordered = Object.keys(GAMEDATA).sort().reduce(
-  (obj, key) => { 
-    obj[key] = GAMEDATA[key]; 
-    return obj;
-  }, 
-  {}
-);
-
-console.log(JSON.stringify(ordered));
-
-for (const [_, eventObject] of Object.entries(ordered)) {
+GAMEDATA.forEach((eventObject) => {
     switch (eventObject.eventName) {
         case "Click":
             if (eventObject.location === "restartButton") {
@@ -92,6 +82,6 @@ for (const [_, eventObject] of Object.entries(ordered)) {
             }
             break;
     }
-}
+});
 
 return valid;

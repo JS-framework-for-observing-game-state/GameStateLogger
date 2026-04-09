@@ -5,6 +5,9 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
+// Key for identifying events in output JSON file
+let key = 0;
+
 app.use(cors());
 
 app.listen(PORT, () => {
@@ -37,7 +40,7 @@ try {
             try {
                // Formatting: "key" : {eventinformation} }
                let data = JSON.stringify(v);
-
+               key++;
 
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
