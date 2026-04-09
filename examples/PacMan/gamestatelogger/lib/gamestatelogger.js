@@ -9,10 +9,11 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key down presses.
     **/
-   logKeyDownEvent(ID = this.ID, event, time, points) {
+   logKeyDownEvent(ID = this.ID, key, time, points) {
       const Event = {
             ID: ID,
-            eventName: event,
+            eventName: "keyDown",
+            keyPressed: key,
             eventTime: time,
             points: points,
       };
@@ -31,11 +32,11 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key up releases.
     **/
-   logKeyUpEvent(ID = this.ID, event, time = "n/a", points = "n/a") {
+   logKeyUpEvent(ID = this.ID, key, time = "n/a", points = "n/a") {
       const Event = {
             ID: ID,
-            eventName: event,
-            keyPressType: "keyUp",
+            eventName: "keyUp",
+            keyPressed: key,
             eventTime: time,
             points: points,
       };
