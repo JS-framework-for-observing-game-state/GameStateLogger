@@ -208,18 +208,20 @@ var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 var element = GAMEDATA[0];
 var nextElement = 1;
 
-
-for(var i = 0; i <= maxTime; i++) {
+var i = 0;
+const inter = setInterval(function() {
+//for(var i = 0; i <= maxTime; i++) {
     gameInstance.mainLoop();
-
+    console.log(element);
     if (element === null) {
-        break;
+        clearInterval(inter);
+        //break;
     }
     
     if(i === element.eventTime){
         if (element.eventTime === maxTime) {
             valid = gameInstance.collisionSnake() === "Dead";
-            break;
+            //break;
         }
 
         if(element != null && element.level === "Ate apple!"){
@@ -256,6 +258,6 @@ for(var i = 0; i <= maxTime; i++) {
             element = null;
         }
     }
-}
-
+i++;}
+, 10);
 console.log("Was game run valid?: " + valid);
