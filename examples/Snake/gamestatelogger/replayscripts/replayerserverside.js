@@ -88,7 +88,6 @@ class Snake {
         // draw snake one cell at a time
         this.context.fillStyle = 'green';
         
-        this.context.fillRect(this.snake.cells[0].x, this.snake.cells[0].y, this.grid-1, this.grid-1);
         this.snake.cells.forEach(cell => {
             // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
             this.context.fillRect(cell.x, cell.y, this.grid-1, this.grid-1);
@@ -213,14 +212,18 @@ const inter = setInterval(function() {
 //for(var i = 0; i <= maxTime; i++) {
     gameInstance.mainLoop();
     console.log(element);
+    /*
     if (element === null) {
         clearInterval(inter);
         //break;
     }
+        */
     
     if(i === element.eventTime){
         if (element.eventTime === maxTime) {
             valid = gameInstance.collisionSnake() === "Dead";
+            console.log("Was game run valid?: " + valid);
+            clearInterval(inter);
             //break;
         }
 
@@ -248,6 +251,7 @@ const inter = setInterval(function() {
                 }
             default:
                 break;
+            
         }
 
         element = GAMEDATA[nextElement];
@@ -257,7 +261,7 @@ const inter = setInterval(function() {
         if (nextElement >= GAMEDATA.length + 1) {
             element = null;
         }
+        
     }
 i++;}
-, 10);
-console.log("Was game run valid?: " + valid);
+, 5);
