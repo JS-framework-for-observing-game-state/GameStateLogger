@@ -128,79 +128,45 @@ var valid = false;
 
 let gameInstance = new Snake();
 
-let GAMEDATA =
-[{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":112,"points":4},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":173,"points":4},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":233,"points":4},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":298,"points":4},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":366,"points":4},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":379,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":382,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":434,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":488,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":577,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":590,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":618,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":669,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":716,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":776,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":813,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":852,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":860,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":912,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":927,"points":5},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":939,"points":6},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":967,"points":7},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":991,"points":7},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1044,"points":7},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1094,"points":7},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1123,"points":7},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":1159,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1173,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1199,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":1242,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1284,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1338,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1374,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":1419,"points":8},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":1435,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1450,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1492,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1520,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":1555,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1592,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1636,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1702,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":1720,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":1786,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1816,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1870,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":1889,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":1938,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":1992,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2016,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2046,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2076,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":2117,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":2173,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2188,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2247,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":2271,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":2322,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2341,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2418,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2507,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2593,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":2610,"points":9},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":2627,"points":10},
-{"ID":"mnwzcezl0.wdmv8f1mhp","level":"Ate apple!","eventTime":2679,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":2695,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2737,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":38,"eventTime":2744,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":39,"eventTime":2775,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":40,"eventTime":2792,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","eventName":"keyDown","keyPressed":37,"eventTime":2793,"points":11},
-{"ID":"mnwzcezl0.wdmv8f1mhp","gameEnd":true,"eventName":"Game over!","eventTime":2795,"points":11,"highscore":"n/a"}]
+let GAMEDATA = 
+[{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":50,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":94,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":129,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":159,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":188,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":226,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":254,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":296,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":319,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":367,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":395,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":444,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":499,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":532,"points":4},
+    {"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":555,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":590,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":637,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":712,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":727,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":787,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":860,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":919,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":962,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":1010,"points":5},
+    {"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":1031,"points":6},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":1059,"points":6},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1120,"points":6},
+    {"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":1171,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1185,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1247,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":1275,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":1325,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1353,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1388,"points":7},
+    {"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1408,"points":7},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":1444,"points":7},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":1476,"points":7},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1528,"points":7},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1554,"points":7},{"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":1595,"points":8},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":1602,"points":8},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":1634,"points":8},{"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":1675,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":1697,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1733,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1742,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":1849,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":1895,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":1965,"points":9},{"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":1999,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2022,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2039,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2054,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2079,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2094,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2106,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2134,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2235,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2273,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2297,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2308,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2340,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2355,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2360,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2380,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2421,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2446,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2497,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2507,"points":10},{"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":2507,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2522,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2583,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2601,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2668,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2707,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2732,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2795,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2806,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":2818,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":2833,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":2897,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":2933,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":3019,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":3028,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3043,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3058,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":3083,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3142,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3171,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3231,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3424,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3521,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3545,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":3599,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3641,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3703,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":3798,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":3810,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":3898,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":3923,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4007,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4014,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4075,"points":11},{"ID":"mnx643dk0.e76abwnc2tn","level":"Ate apple!","eventTime":4079,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":4107,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":4176,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":4283,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4333,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4337,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4463,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4478,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":4606,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":4622,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4641,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4662,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":4689,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":4698,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4714,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4743,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":4777,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4822,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":37,"eventTime":4824,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":40,"eventTime":4876,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":39,"eventTime":4886,"points":12},{"ID":"mnx643dk0.e76abwnc2tn","eventName":"keyDown","keyPressed":38,"eventTime":4898,"points":12},
+    {"ID":"mnx643dk0.e76abwnc2tn","gameEnd":true,"eventName":"Game over!","eventTime":4903,"points":12,"highscore":"n/a"}]
+
+     
 
 var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 
@@ -211,7 +177,6 @@ var i = 0;
 const inter = setInterval(function() {
 //for(var i = 0; i <= maxTime; i++) {
     gameInstance.mainLoop();
-    console.log(element);
     /*
     if (element === null) {
         clearInterval(inter);
@@ -224,6 +189,7 @@ const inter = setInterval(function() {
             valid = gameInstance.collisionSnake() === "Dead";
             console.log("Was game run valid?: " + valid);
             clearInterval(inter);
+            console.log("log is not cleared");
             //break;
         }
 
@@ -254,7 +220,18 @@ const inter = setInterval(function() {
             
         }
 
+        if (element.eventTime === maxTime) {
+            console.log("still running");
+        }
         element = GAMEDATA[nextElement];
+
+        
+        if (element != null && element.eventTime === i){
+            i--;
+        }
+
+
+
         nextElement+=1; 
             
         
