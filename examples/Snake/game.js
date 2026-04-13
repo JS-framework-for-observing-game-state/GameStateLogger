@@ -40,6 +40,7 @@ function loop() {
 
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
   if (++count < 4) {
+    timeStep++;
     return;
   }
 
@@ -127,25 +128,25 @@ document.addEventListener('keydown', function(e) {
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowLeft", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 37, timeStep, snake.maxCells);
   }
   // up arrow key
   else if (e.which === 38 && snake.dy === 0) {
     snake.dy = -grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowUp", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 38, timeStep, snake.maxCells);
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
     snake.dx = grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowRight", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 39, timeStep, snake.maxCells);
   }
   // down arrow key
   else if (e.which === 40 && snake.dy === 0) {
     snake.dy = grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowDown", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 40, timeStep, snake.maxCells);
   }
 });
 
