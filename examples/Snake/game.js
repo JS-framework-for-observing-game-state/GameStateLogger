@@ -36,7 +36,9 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
-  requestAnimationFrame(loop);
+  gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep}`,
+    {x: this.snake.cells[0].x, y: this.snake.cells[0].y}, timeStep);
+  requestAnimationFrame(loop); //basically et main loop call som sørger for konstant at kalde main loop
 
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
   if (++count < 4) {
@@ -47,10 +49,11 @@ function loop() {
   count = 0;
   context.clearRect(0,0,canvas.width,canvas.height);
 
+  console.log("Before moving snake at time: " + timeStep);
   // move snake by it's velocity
   snake.x += snake.dx;
   snake.y += snake.dy;
-
+  console.log("After moving snake at time: " + timeStep);
   // wrap snake position horizontally on edge of screen
   if (snake.x < 0) {
     snake.x = canvas.width - grid;
@@ -93,7 +96,9 @@ function loop() {
 
       // canvas is 400x400 which is 25x25 grids
       apple.x = getRandomInt(0, 25) * grid;
+      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
       apple.y = getRandomInt(0, 25) * grid;
+      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
     }
 
     // check collision with all cells after this one (modified bubble sort)
@@ -110,10 +115,16 @@ function loop() {
         snake.dy = 0;
 
         apple.x = getRandomInt(0, 25) * grid;
+        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
         apple.y = getRandomInt(0, 25) * grid;
+        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
       }
     }
   });
+
+  gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep}`,
+    {x: this.snake.cells[0].x, y: this.snake.cells[0].y}, timeStep);
+
   timeStep++;
 }
 
