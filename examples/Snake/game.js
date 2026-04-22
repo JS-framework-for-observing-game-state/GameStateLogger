@@ -36,12 +36,10 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
-  gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep}`,
-    {x: this.snake.cells[0].x, y: this.snake.cells[0].y}, timeStep);
   requestAnimationFrame(loop); //basically et main loop call som sørger for konstant at kalde main loop
 
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
+  if (++count < 16) {
     timeStep++;
     return;
   }
@@ -76,7 +74,12 @@ function loop() {
   // remove cells as we move away from them
   if (snake.cells.length > snake.maxCells) {
     snake.cells.pop();
+/*      gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} after moving`,
+        {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
+      console.log(`Time: ${timeStep}, Snake's position after moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
   }
+
+
 
   // draw apple
   context.fillStyle = 'red';
@@ -121,15 +124,14 @@ function loop() {
       }
     }
   });
-
-  gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep}`,
-    {x: this.snake.cells[0].x, y: this.snake.cells[0].y}, timeStep);
-
   timeStep++;
 }
 
 // listen to keyboard events to move the snake
 document.addEventListener('keydown', function(e) {
+    /*gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} before moving`,
+      {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
+    console.log(`Time: ${timeStep}, Snake's position before moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
   // prevent snake from backtracking on itself by checking that it's
   // not already moving on the same axis (pressing left while moving
   // left won't do anything, and pressing right while moving left
@@ -159,6 +161,7 @@ document.addEventListener('keydown', function(e) {
     snake.dx = 0;
     gamestatelogger.logKeyDownEvent(undefined, 40, timeStep, snake.maxCells);
   }
+  timeStep++;
 });
 
 // start the game

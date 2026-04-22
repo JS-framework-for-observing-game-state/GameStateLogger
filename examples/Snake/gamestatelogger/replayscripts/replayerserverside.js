@@ -4,6 +4,9 @@ class Snake {
         this.canvasH = 400;
         this.grid = 16;
         this.count = 0;
+        /* Below just for testing to confirm i and frameCount are synced.
+        Matches timeStep from main game. */
+        this.frameCount = 0;
 
         this.canvas = document.getElementById('game');
         this.context = this.canvas.getContext('2d');
@@ -48,7 +51,8 @@ class Snake {
     
 
     mainLoop(){
-        if (++this.count < 4) {
+        if (++this.count < 16) {
+            this.frameCount++;
             return;
         }
         this.count = 0;
@@ -90,6 +94,7 @@ class Snake {
             this.context.fillRect(cell.x, cell.y, this.grid-1, this.grid-1);
         });
 
+        this.frameCount++;
     }
 
     moveSnake(e) {
@@ -116,7 +121,8 @@ class Snake {
             this.snake.dx = 0;
             console.log("Moved snake down.");
         }
-   }
+        this.frameCount++;
+    }
 
 }
 
@@ -125,29 +131,7 @@ var valid = false;
 let gameInstance = new Snake();
 
 let GAMEDATA =
-[{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":40,"eventTime":81,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":39,"eventTime":93,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":40,"eventTime":123,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":39,"eventTime":147,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":40,"eventTime":170,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":39,"eventTime":174,"points":4},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","level":"Ate apple!","eventTime":179,"points":5},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":38,"eventTime":201,"points":5},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":37,"eventTime":206,"points":5},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":40,"eventTime":275,"points":5},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":37,"eventTime":279,"points":5},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","level":"Ate apple!","eventTime":303,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":38,"eventTime":329,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":37,"eventTime":346,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":38,"eventTime":360,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":37,"eventTime":371,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":38,"eventTime":387,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":37,"eventTime":422,"points":6},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","level":"Ate apple!","eventTime":431,"points":7},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":40,"eventTime":441,"points":7},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":39,"eventTime":448,"points":7},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","eventName":"keyDown","keyPressed":38,"eventTime":454,"points":7},
-{"ID":"mnx6bw3q0.o9d9i4nb77j","gameEnd":true,"eventName":"Game over!","eventTime":459,"points":7,"highscore":"n/a"}]
+[{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":40,"eventTime":188,"points":4},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":37,"eventTime":345,"points":4},{"ID":"mo9ztrg50.waavz7pbcx","level":"Ate apple!","eventTime":353,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"Random seed: Apple x","randomSeed":336,"eventTime":353},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"Random seed: Apple y","randomSeed":96,"eventTime":353},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":38,"eventTime":365,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":39,"eventTime":382,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","gameEnd":true,"eventName":"Game over!","eventTime":387,"points":5,"highscore":"n/a"}]
      
 
 var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
@@ -158,9 +142,14 @@ var nextElement = 1;
 var i = 0;
 const inter = setInterval(function() {
 //for(var i = 0; i <= maxTime; i++) {
-    
+    /* Below just for testing, ensuring the i loop matches the frameCount
+       which corresponds to timeSkip, logical time from main game.*/
+    console.log(`i is ${i} and frameCount is ${gameInstance.frameCount}`);
     if(i === element.eventTime){
         if (element.eventTime === maxTime) {
+            /* Run main loop before checking for death, as the check usually
+               happens at the end of the main loop. */
+            gameInstance.mainLoop();
             valid = gameInstance.collisionSnake() === "Dead";
             console.log("Was game run valid?: " + valid);
             clearInterval(inter);
@@ -168,6 +157,16 @@ const inter = setInterval(function() {
 
         if(element != null && element.level === "Ate apple!"){
             gameInstance.snake.maxCells++;
+            /* Remember that the game progresses when eating an apple, 
+               usually happens in the end of the main loop. */
+            gameInstance.frameCount++;
+            gameInstance.mainLoop();
+        } else if (element != null && element.eventName.includes("Random seed:")) {
+            gameInstance.apple.x = element.randomSeed;
+            // Progress the array to get the y element random seed.
+            element = GAMEDATA[nextElement];
+            nextElement+=1;
+            gameInstance.apple.y = element.randomSeed;
         }
 
         switch (element.eventName) {
@@ -194,8 +193,10 @@ const inter = setInterval(function() {
 
         element = GAMEDATA[nextElement];
 
-        if (element != null && element.eventTime === i){
+        if (element != null && element.eventTime === i) {
             i--;
+            // Keeping logical time consistent.
+            gameInstance.frameCount--;
         }
 
         nextElement+=1; 
@@ -203,7 +204,10 @@ const inter = setInterval(function() {
         if (nextElement >= GAMEDATA.length + 1) {
             element = null;
         }
+    } else {
+        /* As moves are independent of the main loop, main loop is only
+           executed when a move is not. */
+        gameInstance.mainLoop();
     }
-    gameInstance.mainLoop();
     i++;
 }, 10);
