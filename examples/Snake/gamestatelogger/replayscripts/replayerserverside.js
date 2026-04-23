@@ -38,7 +38,7 @@ class Snake {
         var answer = "";
         this.snake.cells.forEach((cell, index) => {
             for (let i = index + 1; i < this.snake.cells.length; i++) {
-                if (cell.x === this.snake.cells[i].x && cell.y === this.snake.cells[i].y) {
+                if (/*this.snake.cells[0]*/cell.x === this.snake.cells[i].x && /*this.snake.cells[0]*/cell.y === this.snake.cells[i].y) {
                     this.snake.x = 160;
                     this.snake.y = 160;
 
@@ -131,9 +131,7 @@ var valid = false;
 let gameInstance = new Snake();
 
 let GAMEDATA =
-[{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":40,"eventTime":188,"points":4},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":37,"eventTime":345,"points":4},{"ID":"mo9ztrg50.waavz7pbcx","level":"Ate apple!","eventTime":353,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"Random seed: Apple x","randomSeed":336,"eventTime":353},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"Random seed: Apple y","randomSeed":96,"eventTime":353},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":38,"eventTime":365,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","eventName":"keyDown","keyPressed":39,"eventTime":382,"points":5},{"ID":"mo9ztrg50.waavz7pbcx","gameEnd":true,"eventName":"Game over!","eventTime":387,"points":5,"highscore":"n/a"}]
-     
-
+[{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":40,"eventTime":293,"points":4},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":463,"points":4},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":721,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":64,"eventTime":721},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":16,"eventTime":721},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":735,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":785,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":1028,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":1282,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":1354,"points":5},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":1373,"points":5},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":1447,"points":6},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":336,"eventTime":1447},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":336,"eventTime":1447},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":40,"eventTime":1466,"points":6},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":1796,"points":6},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":2073,"points":7},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":272,"eventTime":2073},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":272,"eventTime":2073},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":2085,"points":7},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":2134,"points":7},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":2185,"points":7},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":2264,"points":7},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":40,"eventTime":2282,"points":7},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":2334,"points":8},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":384,"eventTime":2334},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":160,"eventTime":2334},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":2369,"points":8},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":2411,"points":8},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":2553,"points":8},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":2689,"points":9},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":64,"eventTime":2689},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":112,"eventTime":2689},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":2779,"points":9},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":2818,"points":10},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":112,"eventTime":2818},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":112,"eventTime":2818},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":2825,"points":10},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":2867,"points":11},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":336,"eventTime":2867},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":256,"eventTime":2867},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":40,"eventTime":2946,"points":11},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":3093,"points":11},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":3269,"points":11},{"ID":"moa154vo0.qog0lyyqros","level":"Ate apple!","eventTime":3270,"points":12},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple x","randomSeed":304,"eventTime":3270},{"ID":"moa154vo0.qog0lyyqros","eventName":"Random seed: Apple y","randomSeed":160,"eventTime":3270},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":37,"eventTime":3345,"points":12},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":40,"eventTime":3532,"points":12},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":39,"eventTime":3574,"points":12},{"ID":"moa154vo0.qog0lyyqros","eventName":"keyDown","keyPressed":38,"eventTime":3614,"points":12},{"ID":"moa154vo0.qog0lyyqros","gameEnd":true,"eventName":"Game over!","eventTime":3642,"points":12,"highscore":"n/a"}]
 var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 
 var element = GAMEDATA[0];
@@ -149,6 +147,8 @@ const inter = setInterval(function() {
         if (element.eventTime === maxTime) {
             /* Run main loop before checking for death, as the check usually
                happens at the end of the main loop. */
+            valid = gameInstance.collisionSnake() === "Dead";
+            console.log(gameInstance.collisionSnake());
             gameInstance.mainLoop();
             valid = gameInstance.collisionSnake() === "Dead";
             console.log("Was game run valid?: " + valid);
@@ -160,13 +160,15 @@ const inter = setInterval(function() {
             /* Remember that the game progresses when eating an apple, 
                usually happens in the end of the main loop. */
             gameInstance.frameCount++;
-            gameInstance.mainLoop();
-        } else if (element != null && element.eventName.includes("Random seed:")) {
+            element = GAMEDATA[nextElement];
+            nextElement+=1;
             gameInstance.apple.x = element.randomSeed;
             // Progress the array to get the y element random seed.
             element = GAMEDATA[nextElement];
             nextElement+=1;
             gameInstance.apple.y = element.randomSeed;
+            
+            gameInstance.mainLoop();
         }
 
         switch (element.eventName) {
