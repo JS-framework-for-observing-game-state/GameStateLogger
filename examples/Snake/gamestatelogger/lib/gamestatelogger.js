@@ -32,7 +32,7 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key up releases.
     **/
-   logKeyUpEvent(ID = this.ID, key, time = "n/a", points = "n/a") {
+   logKeyUpEvent(ID = this.ID, key, time, points = "n/a") {
       const Event = {
             ID: ID,
             eventName: "keyUp",
@@ -99,7 +99,7 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logGameResult(ID = this.ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
+   logGameResult(ID = this.ID, event, time, points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
             gameEnd: true,
@@ -116,12 +116,51 @@ export class GameStateLogger {
       this.postData();
    }
    
+   /**
+    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
+    **/
+   logLocation(ID = this.ID, event, location, time) {
+      const Event = {
+            ID: ID,
+            eventName: event,  // E.g. "Snake's position"
+            location: location, // E.g. an object containing an x and y {x: ..., y: ...}
+            eventTime: time
+      };
+
+      this.EventLog.push(Event); 
+      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
+        and has ${Event.location} position.`); // Only for testing
+      
+      if (this.EventLog.length > this.flushSize) {
+         this.postData();
+      }
+   }
+   
+   /**
+    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
+    **/
+   logRandomSeed(ID = this.ID, event, randomSeed, time) {
+      const Event = {
+            ID: ID,
+            eventName: event,  // E.g. "Random seed: Apple x"
+            randomSeed: randomSeed,
+            eventTime: time
+      };
+
+      this.EventLog.push(Event); 
+      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
+        and has ${Event.randomSeed} seed.`); // Only for testing
+      
+      if (this.EventLog.length > this.flushSize) {
+         this.postData();
+      }
+   }
 
    /**
     * Log when a user is closing the game window, only used when a
     * window is closed in the middle of a session (logGameResult is not the final event.)
     **/
-   logWindowClose(ID = this.ID, event, time = "n/a", points = "n/a", highscore = "n/a") {
+   logWindowClose(ID = this.ID, event, time, points = "n/a", highscore = "n/a") {
       const Event = {
             ID: ID,
             eventName: event,

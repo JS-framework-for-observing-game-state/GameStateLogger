@@ -36,20 +36,22 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
-  requestAnimationFrame(loop);
+  requestAnimationFrame(loop); //basically et main loop call som sørger for konstant at kalde main loop
 
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
+  if (++count < 16) {
+    timeStep++;
     return;
   }
 
   count = 0;
   context.clearRect(0,0,canvas.width,canvas.height);
 
+  console.log("Before moving snake at time: " + timeStep);
   // move snake by it's velocity
   snake.x += snake.dx;
   snake.y += snake.dy;
-
+  console.log("After moving snake at time: " + timeStep);
   // wrap snake position horizontally on edge of screen
   if (snake.x < 0) {
     snake.x = canvas.width - grid;
@@ -72,7 +74,12 @@ function loop() {
   // remove cells as we move away from them
   if (snake.cells.length > snake.maxCells) {
     snake.cells.pop();
+/*      gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} after moving`,
+        {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
+      console.log(`Time: ${timeStep}, Snake's position after moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
   }
+
+
 
   // draw apple
   context.fillStyle = 'red';
@@ -92,7 +99,9 @@ function loop() {
 
       // canvas is 400x400 which is 25x25 grids
       apple.x = getRandomInt(0, 25) * grid;
+      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
       apple.y = getRandomInt(0, 25) * grid;
+      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
     }
 
     // check collision with all cells after this one (modified bubble sort)
@@ -109,7 +118,9 @@ function loop() {
         snake.dy = 0;
 
         apple.x = getRandomInt(0, 25) * grid;
+        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
         apple.y = getRandomInt(0, 25) * grid;
+        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
       }
     }
   });
@@ -118,6 +129,9 @@ function loop() {
 
 // listen to keyboard events to move the snake
 document.addEventListener('keydown', function(e) {
+    /*gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} before moving`,
+      {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
+    console.log(`Time: ${timeStep}, Snake's position before moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
   // prevent snake from backtracking on itself by checking that it's
   // not already moving on the same axis (pressing left while moving
   // left won't do anything, and pressing right while moving left
@@ -127,26 +141,27 @@ document.addEventListener('keydown', function(e) {
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowLeft", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 37, timeStep, snake.maxCells);
   }
   // up arrow key
   else if (e.which === 38 && snake.dy === 0) {
     snake.dy = -grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowUp", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 38, timeStep, snake.maxCells);
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
     snake.dx = grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowRight", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 39, timeStep, snake.maxCells);
   }
   // down arrow key
   else if (e.which === 40 && snake.dy === 0) {
     snake.dy = grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, "ArrowDown", timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(undefined, 40, timeStep, snake.maxCells);
   }
+  timeStep++;
 });
 
 // start the game
