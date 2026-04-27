@@ -103,6 +103,9 @@ var valid = false;
 
 let gameInstance = new Snake();
 
+/* Remember to insert data if you want to use this class server-side
+let GAMEDATA =
+*/
 
 var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 
@@ -114,6 +117,8 @@ for(var i = 0; i <= maxTime; i++) {
         if (element.eventTime === maxTime) {
             gameInstance.mainLoop();
             valid = gameInstance.collisionSnake() === "Dead";
+            // Below line removed when integrated with database.
+            console.log("Was game run valid?: " + valid);
             break;
         }
 
@@ -170,4 +175,4 @@ for(var i = 0; i <= maxTime; i++) {
     }
 }
 
-return valid;
+//return valid;
