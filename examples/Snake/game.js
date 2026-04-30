@@ -2,7 +2,7 @@ import { GameStateLogger } from './gamestatelogger/lib/gamestatelogger.js';
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
-let gamestatelogger = new GameStateLogger([], 10);
+let gamestatelogger = new GameStateLogger(10);
 
 // the canvas width & height, snake x & y, and the apple x & y, all need to be a multiples of the grid size in order for collision detection to work
 // (e.g. 16 * 25 = 400)
@@ -95,13 +95,13 @@ function loop() {
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
-      gamestatelogger.logNewLevel(undefined, "Ate apple!", timeStep, snake.maxCells);
+      gamestatelogger.logNewLevel("Ate apple!", timeStep, snake.maxCells);
 
       // canvas is 400x400 which is 25x25 grids
       apple.x = getRandomInt(0, 25) * grid;
-      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
+      gamestatelogger.logRandomSeed("Random seed: Apple x", apple.x, timeStep);
       apple.y = getRandomInt(0, 25) * grid;
-      gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
+      gamestatelogger.logRandomSeed("Random seed: Apple y", apple.y, timeStep);
     }
 
     // check collision with all cells after this one (modified bubble sort)
@@ -109,7 +109,7 @@ function loop() {
 
       // snake occupies same space as a body part. reset game
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        gamestatelogger.logGameResult(undefined, "Game over!", timeStep, snake.maxCells);
+        gamestatelogger.logGameResult("Game over!", timeStep, snake.maxCells);
         snake.x = 160;
         snake.y = 160;
         snake.cells = [];
@@ -118,9 +118,9 @@ function loop() {
         snake.dy = 0;
 
         apple.x = getRandomInt(0, 25) * grid;
-        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple x", apple.x, timeStep);
+        gamestatelogger.logRandomSeed("Random seed: Apple x", apple.x, timeStep);
         apple.y = getRandomInt(0, 25) * grid;
-        gamestatelogger.logRandomSeed(undefined, "Random seed: Apple y", apple.y, timeStep);
+        gamestatelogger.logRandomSeed("Random seed: Apple y", apple.y, timeStep);
       }
     }
   });
@@ -141,25 +141,25 @@ document.addEventListener('keydown', function(e) {
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, 37, timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(37, timeStep, snake.maxCells);
   }
   // up arrow key
   else if (e.which === 38 && snake.dy === 0) {
     snake.dy = -grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, 38, timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(38, timeStep, snake.maxCells);
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
     snake.dx = grid;
     snake.dy = 0;
-    gamestatelogger.logKeyDownEvent(undefined, 39, timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(39, timeStep, snake.maxCells);
   }
   // down arrow key
   else if (e.which === 40 && snake.dy === 0) {
     snake.dy = grid;
     snake.dx = 0;
-    gamestatelogger.logKeyDownEvent(undefined, 40, timeStep, snake.maxCells);
+    gamestatelogger.logKeyDownEvent(40, timeStep, snake.maxCells);
   }
   timeStep++;
 });

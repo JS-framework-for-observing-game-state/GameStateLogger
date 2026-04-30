@@ -1,6 +1,6 @@
 export class GameStateLogger {
-   constructor(eventlog, flushSize, ID = (Date.now().toString(36) + Math.random().toString(36))) {
-      this.EventLog = eventlog; // Array for holding tuples of eventName and eventTime, to send to server
+   constructor(flushSize, ID = (Date.now().toString(36) + Math.random().toString(36))) {
+      this.EventLog = []; // Array for holding tuples of eventName and eventTime, to send to server
       this.flushSize = flushSize; // Number of events to log before sending to server
       this.ID = ID;
    }
@@ -9,9 +9,9 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key down presses.
     **/
-   logKeyDownEvent(ID = this.ID, key, time, points) {
+   logKeyDownEvent(key, time, points) {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: "keyDown",
             keyPressed: key,
             eventTime: time,
@@ -32,9 +32,9 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key up releases.
     **/
-   logKeyUpEvent(ID = this.ID, key, time, points = "n/a") {
+   logKeyUpEvent(key, time, points = "n/a") {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: "keyUp",
             keyPressed: key,
             eventTime: time,
@@ -55,9 +55,9 @@ export class GameStateLogger {
     * as the event(Name) and the location as the location of the initiated
     * swipe (if nescessary).
     **/
-   logClickEvent(ID = this.ID, event, location, time, points) {
+   logClickEvent(event, location, time, points) {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: event,
             location: location,
             eventTime: time,
@@ -78,9 +78,9 @@ export class GameStateLogger {
    /**
     * Log new level.
     **/
-   logNewLevel(ID = this.ID, newlevel, time, points) {
+   logNewLevel(newlevel, time, points) {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             level: newlevel,
             eventTime: time,
             points: points,
@@ -99,9 +99,9 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logGameResult(ID = this.ID, event, time, points = "n/a", highscore = "n/a") {
+   logGameResult(event, time, points = "n/a", highscore = "n/a") {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             gameEnd: true,
             eventName: event,
             eventTime: time,
@@ -119,9 +119,9 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logLocation(ID = this.ID, event, location, time) {
+   logLocation(event, location, time) {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: event,  // E.g. "Snake's position"
             location: location, // E.g. an object containing an x and y {x: ..., y: ...}
             eventTime: time
@@ -139,9 +139,9 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logRandomSeed(ID = this.ID, event, randomSeed, time) {
+   logRandomSeed(event, randomSeed, time) {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: event,  // E.g. "Random seed: Apple x"
             randomSeed: randomSeed,
             eventTime: time
@@ -160,9 +160,9 @@ export class GameStateLogger {
     * Log when a user is closing the game window, only used when a
     * window is closed in the middle of a session (logGameResult is not the final event.)
     **/
-   logWindowClose(ID = this.ID, event, time, points = "n/a", highscore = "n/a") {
+   logWindowClose(event, time, points = "n/a", highscore = "n/a") {
       const Event = {
-            ID: ID,
+            ID: this.ID,
             eventName: event,
             eventTime: time,
             points: points,

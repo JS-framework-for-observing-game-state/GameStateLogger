@@ -1217,7 +1217,7 @@ class GameCoordinator {
       this.firstGame = false;
       this.init();
     }
-    this.GameStateLogger.logKeyDownEvent(this.GameStateLogger.ID, "Game started", "startbutton", this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logKeyDownEvent("Game started", "startbutton", this.gameEngine.frameId, this.points);
     
     this.startGameplay(true);
   }
@@ -1569,7 +1569,7 @@ class GameCoordinator {
    * Calls necessary setup functions to start the game
    */
   init() {
-    this.GameStateLogger = new GameStateLogger([], 10);
+    this.GameStateLogger = new GameStateLogger(10);
     this.registerEventListeners();
     this.registerTouchListeners();
 
@@ -1777,7 +1777,7 @@ class GameCoordinator {
   }
 
   handleGameEnded (event) {
-    this.GameStateLogger.logWindowClose(this.GameStateLogger.ID, "Session ended", this.gameEngine.frameId, this.points, this.highScore)
+    this.GameStateLogger.logWindowClose("Session ended", this.gameEngine.frameId, this.points, this.highScore)
     this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
   }
   /**
@@ -1845,7 +1845,7 @@ class GameCoordinator {
     } else if (this.movementKeys[e.keyCode]) {
       this.changeDirection(this.movementKeys[e.keyCode]);
     }
-    this.GameStateLogger.logKeyDownEvent(this.GameStateLogger.ID, e.key, this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logKeyDownEvent(e.key, this.gameEngine.frameId, this.points);
   }
 
   /**
@@ -1853,7 +1853,7 @@ class GameCoordinator {
    * @param {Event} e - The direction of the swipe
    */
   handleSwipe(e) {
-    this.GameStateLogger.logClickEvent(this.GameStateLogger.ID, e.detail, this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logClickEvent(e.detail, this.gameEngine.frameId, this.points);
 
     const { direction } = e.detail;
     this.changeDirection(direction);
@@ -1990,7 +1990,7 @@ class GameCoordinator {
    * Displays GAME OVER text and displays the menu so players can play again
    */
   gameOver() {
-    this.GameStateLogger.logGameResult(this.GameStateLogger.ID, "Game Over", this.gameEngine.frameId, this.points, this.highScore);
+    this.GameStateLogger.logGameResult("Game Over", this.gameEngine.frameId, this.points, this.highScore);
     this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
     localStorage.setItem('highScore', this.highScore);
 
@@ -2126,7 +2126,7 @@ class GameCoordinator {
                   new Timer(() => {
                     this.mazeCover.style.visibility = 'hidden';
                     this.level += 1;
-                    this.GameStateLogger.logNewLevel(this.GameStateLogger.ID, this.level, this.gameEngine.frameId, this.points);
+                    this.GameStateLogger.logNewLevel(this.level, this.gameEngine.frameId, this.points);
                     this.allowKeyPresses = true;
                     this.entityList.forEach((entity) => {
                       const entityRef = entity;
