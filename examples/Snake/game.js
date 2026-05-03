@@ -1,4 +1,5 @@
 import { GameStateLogger } from './gamestatelogger/lib/gamestatelogger.js';
+
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
@@ -117,10 +118,11 @@ function loop() {
         snake.dx = grid;
         snake.dy = 0;
 
-        apple.x = getRandomInt(0, 25) * grid;
-        gamestatelogger.logRandomSeed("Random seed: Apple x", apple.x, timeStep);
-        apple.y = getRandomInt(0, 25) * grid;
-        gamestatelogger.logRandomSeed("Random seed: Apple y", apple.y, timeStep);
+        apple.x = 320;
+        apple.y = 320;
+        count = 0;
+        timeStep = 0;
+        gamestatelogger.ID = (Date.now().toString(36) + Math.random().toString(36));
       }
     }
   });
