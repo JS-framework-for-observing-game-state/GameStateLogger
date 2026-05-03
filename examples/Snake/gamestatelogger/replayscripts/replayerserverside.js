@@ -1,3 +1,4 @@
+import { error } from 'console';
 import fs from 'fs';
 class Snake {
     constructor() {
@@ -130,8 +131,12 @@ let gameInstance = new Snake();
 const dir = "../server/JSONfiles/";
 
 let filesArr = fs.readdirSync(dir);
-console.log("Files in directory: " + filesArr);
-let noOfFiles = 10;
+
+let noOfFiles = 100;
+
+if (noOfFiles > filesArr.length) {
+    throw new Error("noOfFiles exceeds actual number of files in the directory!");
+}
 
 for(var j = 0; j <= noOfFiles; j++) {
     console.log(`Replaying file no. ${j}, ID: ${filesArr[j]}`);
