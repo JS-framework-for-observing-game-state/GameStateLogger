@@ -138,9 +138,9 @@ if (noOfFiles > filesArr.length) {
     throw new Error("noOfFiles exceeds actual number of files in the directory!");
 }
 
-for(var j = 0; j <= noOfFiles; j++) {
-    console.log(`Replaying file no. ${j}, ID: ${filesArr[j]}`);
-    let path = dir + filesArr[j];
+for(var i = 0; i <= noOfFiles; i++) {
+    console.log(`Replaying file no. ${i}, ID: ${filesArr[i]}`);
+    let path = dir + filesArr[i];
     let GAMEDATA = JSON.parse(fs.readFileSync(path));
 
     var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
@@ -148,8 +148,8 @@ for(var j = 0; j <= noOfFiles; j++) {
     var element = GAMEDATA[0];
     var nextElement = 1;
 
-    for(var i = 0; i <= maxTime; i++) {
-        if(i === element.eventTime){
+    for(var j = 0; j <= maxTime; j++) {
+        if(j === element.eventTime){
             if (element.eventTime === maxTime) {
                 gameInstance.mainLoop();
                 valid = gameInstance.collisionSnake() === "Dead";
@@ -197,8 +197,8 @@ for(var j = 0; j <= noOfFiles; j++) {
 
             element = GAMEDATA[nextElement];
 
-            if (element != null && element.eventTime === i) {
-                i--;
+            if (element != null && element.eventTime === j) {
+                j--;
                 // Keeping logical time consistent.
                 gameInstance.frameCount--;
             }
@@ -210,8 +210,7 @@ for(var j = 0; j <= noOfFiles; j++) {
             }
         } else {
             /* As moves are independent of the main loop, main loop is only
-           executed when a move is not. */
-        
+                executed when a move is not. */
             gameInstance.mainLoop();
         }
     }
