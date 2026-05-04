@@ -37,7 +37,6 @@ try {
             try {
                let data = JSON.stringify(v);
 
-
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
                console.log(`Could not write to file, with error: ${e}`);
