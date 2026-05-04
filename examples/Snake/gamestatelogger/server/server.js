@@ -36,8 +36,6 @@ try {
          if (v.gameEnd || v.eventName === "Session ended") {
             try {
                let data = JSON.stringify(v);
-
-
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
                console.log(`Could not write to file, with error: ${e}`);
@@ -46,7 +44,6 @@ try {
          else {
             try {
                let data = JSON.stringify(v);
-
                fs.writeFileSync(filePath, data, {flag: "a+"});
             } catch (e) {
                console.log(`Could not write to file, with error: ${e}`);

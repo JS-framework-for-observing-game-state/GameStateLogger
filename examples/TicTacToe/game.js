@@ -1,6 +1,6 @@
 import { GameStateLogger } from './gamestatelogger/lib/gamestatelogger.js';
 
-var gamestatelogger = new GameStateLogger([], 10);
+var gamestatelogger = new GameStateLogger(10);
 
 const board = document.getElementById('board')
 var squaresArr = ['', '', '',
@@ -33,13 +33,13 @@ restart.addEventListener('click', () => {
 })
 
 window.addEventListener('beforeunload', () => {
-    gamestatelogger.logWindowClose(undefined, "Session ended", timestep);
+    gamestatelogger.logWindowClose("Session ended", timestep);
 });
 
 for(let i = 0; i < squares.length; i++){
     squares[i].addEventListener('click', () => {
 	if(someoneWon) return;
-        gamestatelogger.logClickEvent(undefined, "Click", i, timestep);
+        gamestatelogger.logClickEvent("Click", i, timestep);
         if(squares[i].textContent !== ''){
             return
         }
@@ -70,7 +70,7 @@ function checkWin(currentPlayer) {
         const [a, b, c] = winning_combinations[i]
         if(squaresArr[a] === currentPlayer && squaresArr[b] === currentPlayer
             && squaresArr[c] === currentPlayer){
-            gamestatelogger.logGameResult(undefined,`Game over! ${currentPlayer} wins!`, timestep)
+            gamestatelogger.logGameResult(`Game over! ${currentPlayer} wins!`, timestep)
             gamestatelogger.ID = Date.now().toString(36) + Math.random().toString(36);
             timestep++;
             return true
@@ -85,7 +85,7 @@ function checkTie(){
             return false;
         }
     }
-    gamestatelogger.logGameResult(undefined,"Tie", timestep);
+    gamestatelogger.logGameResult("Tie", timestep);
     gamestatelogger.ID = Date.now().toString(36) + Math.random().toString(36);
     timestep++;
     return true
@@ -97,7 +97,7 @@ function restartButton() {
         squares[i].textContent = ""
         squaresArr[i] = '';
     }
-    gamestatelogger.logClickEvent(undefined, "Click", 'restartButton', timestep)
+    gamestatelogger.logClickEvent("Click", 'restartButton', timestep)
     timestep++;
 
     endMessage.textContent=`X's turn!`
