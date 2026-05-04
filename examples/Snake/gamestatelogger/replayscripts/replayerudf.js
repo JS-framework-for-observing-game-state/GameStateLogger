@@ -1,4 +1,3 @@
-import fs from 'fs';
 class Snake {
     constructor() {
         this.canvasW = 400;
@@ -103,10 +102,11 @@ class Snake {
 var valid = false;
 
 let gameInstance = new Snake();
-const dir = "../server/JSONfiles/" + "mopuckxi0.4vv8qe0b6om.json";
-let data = fs.readFileSync(dir); 
-let GAMEDATA = JSON.parse(data);
-//37: left. 38: up. 39: right. 40: down.
+
+/* Remember to insert data if you want to use this class server-side
+let GAMEDATA =
+*/
+
 var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 
 var element = GAMEDATA[0];
@@ -117,7 +117,8 @@ for(var i = 0; i <= maxTime; i++) {
         if (element.eventTime === maxTime) {
             gameInstance.mainLoop();
             valid = gameInstance.collisionSnake() === "Dead";
-            console.log("Game valid? " + valid);
+            // Below line removed when integrated with database.
+            console.log("Was game run valid?: " + valid);
             break;
         }
 

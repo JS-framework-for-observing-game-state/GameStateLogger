@@ -132,13 +132,14 @@ const dir = "../server/JSONfiles/";
 
 let filesArr = fs.readdirSync(dir);
 
-let noOfFiles = 100;
+let noOfFiles = 1000;
 
 if (noOfFiles > filesArr.length) {
     throw new Error("noOfFiles exceeds actual number of files in the directory!");
 }
 
-for(var i = 0; i <= noOfFiles; i++) {
+const startTime = performance.now();
+for(var i = 0; i < noOfFiles; i++) {
     console.log(`Replaying file no. ${i}, ID: ${filesArr[i]}`);
     let path = dir + filesArr[i];
     let GAMEDATA = JSON.parse(fs.readFileSync(path));
@@ -215,3 +216,6 @@ for(var i = 0; i <= noOfFiles; i++) {
         }
     }
 }
+
+const endTime = performance.now();
+console.log(`Time taken to replay ${noOfFiles} games: ${endTime - startTime} milliseconds`);
