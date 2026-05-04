@@ -9,13 +9,13 @@ export class GameStateLogger {
    /**
     * Called by user of the library. Logs key down presses.
     **/
-   logKeyDownEvent(key, time, points) {
+   logKeyDownEvent(key, time, points = "n/a") {
       const Event = {
             ID: this.ID,
             eventName: "keyDown",
             keyPressed: key,
             eventTime: time,
-            points: points,
+            points: points
       };
 
       this.EventLog.push(Event); 
@@ -38,7 +38,7 @@ export class GameStateLogger {
             eventName: "keyUp",
             keyPressed: key,
             eventTime: time,
-            points: points,
+            points: points
       };
 
       this.EventLog.push(Event);
@@ -55,13 +55,13 @@ export class GameStateLogger {
     * as the event(Name) and the location as the location of the initiated
     * swipe (if nescessary).
     **/
-   logClickEvent(event, location, time, points) {
+   logClickEvent(event, location, time, points = "n/a") {
       const Event = {
             ID: this.ID,
             eventName: event,
             location: location,
             eventTime: time,
-            points: points,
+            points: points
       };
 
       this.EventLog.push(Event); 
@@ -78,12 +78,12 @@ export class GameStateLogger {
    /**
     * Log new level.
     **/
-   logNewLevel(newlevel, time, points) {
+   logNewLevel(newlevel, time, points = "n/a") {
       const Event = {
             ID: this.ID,
             level: newlevel,
             eventTime: time,
-            points: points,
+            points: points
       };
 
       this.EventLog.push(Event); 
@@ -99,14 +99,13 @@ export class GameStateLogger {
    /**
     * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
     **/
-   logGameResult(event, time, points = "n/a", highscore = "n/a") {
+   logGameResult(event, time, points = "n/a") {
       const Event = {
             ID: this.ID,
             gameEnd: true,
             eventName: event,
             eventTime: time,
-            points: points,
-            highscore: highscore,
+            points: points
       };
 
       this.EventLog.push(Event); 
@@ -160,13 +159,12 @@ export class GameStateLogger {
     * Log when a user is closing the game window, only used when a
     * window is closed in the middle of a session (logGameResult is not the final event.)
     **/
-   logWindowClose(event, time, points = "n/a", highscore = "n/a") {
+   logWindowClose(event, time, points = "n/a") {
       const Event = {
             ID: this.ID,
             eventName: event,
             eventTime: time,
-            points: points,
-            highscore: highscore,
+            points: points
       };
 
       this.EventLog.push(Event); 
