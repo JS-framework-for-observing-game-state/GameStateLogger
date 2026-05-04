@@ -1,13 +1,13 @@
 export class GameStateLogger {
    constructor(flushSize, ID = (Date.now().toString(36) + Math.random().toString(36))) {
-      this.EventLog = []; // Array for holding tuples of eventName and eventTime, to send to server
+      this.eventLog = []; // Array for holding tuples of eventName and eventTime, to send to server
       this.flushSize = flushSize; // Number of events to log before sending to server
       this.ID = ID;
    }
 
 
    /**
-    * Called by user of the library. Logs key down presses.
+    * Logs key down presses
     **/
    logKeyDownEvent(key, time, points = "n/a") {
       const Event = {
@@ -18,19 +18,17 @@ export class GameStateLogger {
             points: points
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName} action. Logged at ${Event.eventTime} and has ${Event.points} points`); // Only for testing
+      this.eventLog.push(Event); 
       
-      // Array is flushed and data sent, every time the array hits over 10 elements.
-      // Interval can be changed later
-      if (this.EventLog.length > this.flushSize) {
+      // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
    
    
    /**
-    * Called by user of the library. Logs key up releases.
+    * Logs key up releases
     **/
    logKeyUpEvent(key, time, points = "n/a") {
       const Event = {
@@ -41,19 +39,22 @@ export class GameStateLogger {
             points: points
       };
 
-      this.EventLog.push(Event);
-      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} and has ${Event.points} points`); // Only for testing
+      this.eventLog.push(Event);
+       // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
+         this.postData();
+      }
    }
 
 
    /**
-    * Used to log clicks on buttons, and clicks and their placement.
+    * Used to log clicks and their placement.
     * Location when logging a button click is the button name.
     * When logging a specific place click, recommended syntax for
     * location is: {x: xcoord, y: ycoord}.
     * Can also be used to log swipe events by logging the direction
     * as the event(Name) and the location as the location of the initiated
-    * swipe (if nescessary).
+    * swipe.
     **/
    logClickEvent(event, location, time, points = "n/a") {
       const Event = {
@@ -64,34 +65,29 @@ export class GameStateLogger {
             points: points
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${JSON.stringify(Event.eventName)} action, clicked at ${Event.location}. Logged at ${Event.eventTime} and has ${Event.points} points`); // Only for testing
-      
-      // Array is flushed and data sent, every time the array hits over 10 elements.
-      // Interval can be changed later
-      if (this.EventLog.length > this.flushSize) {
+      this.eventLog.push(Event); 
+       // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
 
 
    /**
-    * Log new level.
+    * Logs a new level
     **/
-   logNewLevel(newlevel, time, points = "n/a") {
+   logNewLevel(event, time, points = "n/a") {
       const Event = {
             ID: this.ID,
-            level: newlevel,
+            eventName: event,
+            levelChanged: true,
             eventTime: time,
             points: points
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Level changed to ${Event.level}. Logged at ${Event.eventTime} time and has ${Event.points} points`); // Only for testing
-      
-      // Array is flushed and data sent, every time the array hits over 10 elements.
-      // Interval can be changed later
-      if (this.EventLog.length > this.flushSize) {
+      this.eventLog.push(Event); 
+      // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
@@ -108,15 +104,13 @@ export class GameStateLogger {
             points: points
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
-        and has ${Event.points} points, with ${Event.highscore} highscore`); // Only for testing
+      this.eventLog.push(Event); 
       
       this.postData();
    }
    
    /**
-    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
+    * Logs the location of any element e.g. {x: coord, y: coord}
     **/
    logLocation(event, location, time) {
       const Event = {
@@ -126,17 +120,15 @@ export class GameStateLogger {
             eventTime: time
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
-        and has ${Event.location} position.`); // Only for testing
-      
-      if (this.EventLog.length > this.flushSize) {
+      this.eventLog.push(Event); 
+      // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
    
    /**
-    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
+    * Logs a random seed
     **/
    logRandomSeed(event, randomSeed, time) {
       const Event = {
@@ -146,18 +138,16 @@ export class GameStateLogger {
             eventTime: time
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} 
-        and has ${Event.randomSeed} seed.`); // Only for testing
-      
-      if (this.EventLog.length > this.flushSize) {
+      this.eventLog.push(Event);
+      // Array is flushed and data sent, every time the array length exceeds flushSize
+      if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
 
    /**
-    * Log when a user is closing the game window, only used when a
-    * window is closed in the middle of a session (logGameResult is not the final event.)
+    * Logs when a user is closing the game window, only used when a
+    * window is closed in the middle of a session
     **/
    logWindowClose(event, time, points = "n/a") {
       const Event = {
@@ -167,17 +157,15 @@ export class GameStateLogger {
             points: points
       };
 
-      this.EventLog.push(Event); 
-      console.log(`Logged ${Event.eventName} event. Logged at time: ${Event.eventTime} and has ${Event.points} points,
-        with ${Event.highscore} highscore`); // Only for testing
+      this.eventLog.push(Event); 
       
-      // Array is flushed as player has ended the game.
+      // Array is flushed as player has ended the game
       this.postData();
    }
 
 
    /**
-    * Send logged events to the server via. POST request. 
+    * Send logged events to the server via. POST request
     **/
    postData () {
       fetch('http://localhost:3000/log-data',
@@ -185,10 +173,7 @@ export class GameStateLogger {
                   headers: { "Content-Type": "application/json" },
                   mode: 'cors',
                   cache: 'default',
-                  body: JSON.stringify(this.EventLog)})
-                  .then(response => console.log(response))
-                  .catch(error => console.error('Error:', error));
-         
-      this.EventLog = [];
+                  body: JSON.stringify(this.eventLog)});
+      this.eventLog = [];
    }
 }
