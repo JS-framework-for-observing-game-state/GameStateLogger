@@ -110,17 +110,7 @@ var valid = false;
 let gameInstance = new TicTacToe();
 
 let GAMEDATA =
-[{"ID":1,"eventName":"Click","location":"restartButton","eventTime":5,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":3,"eventTime":6,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":4,"eventTime":7,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":1,"eventTime":8,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":7,"eventTime":9,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":5,"eventTime":10,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":0,"eventTime":11,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":8,"eventTime":12,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":6,"eventTime":13,"points":"n/a"},
-{"ID":1,"eventName":"Click","location":2,"eventTime":14,"points":"n/a"},
-{"ID":1,"gameEnd":true,"eventName":"`Game over! O wins!","eventTime":14,"points":"n/a","highscore":"n/a"}]
+[{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":6,"eventTime":0,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":4,"eventTime":1,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":2,"eventTime":2,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":5,"eventTime":3,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":1,"eventTime":4,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":0,"eventTime":5,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":3,"eventTime":6,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":7,"eventTime":7,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","eventName":"Click","location":8,"eventTime":8,"points":"n/a"},{"ID":"mordxzw30.gani935c95u","gameEnd":true,"eventName":"Tie","eventTime":8,"points":"n/a"}]
 
 
 GAMEDATA.forEach((eventObject) => {
@@ -134,7 +124,7 @@ GAMEDATA.forEach((eventObject) => {
             break;
         default:
             if (eventObject.gameEnd === true) {
-                if (eventObject.eventName === "Game is tied!") {
+                if (eventObject.eventName === "Tie") {
                     valid = gameInstance.checkTie();
                 } else {
                     if (eventObject.eventName.includes("X wins!")) {

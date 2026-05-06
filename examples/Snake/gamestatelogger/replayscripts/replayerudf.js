@@ -122,7 +122,7 @@ for(var i = 0; i <= maxTime; i++) {
             break;
         }
 
-        if(element != null && element.level === "Ate apple!"){
+        if(element != null && element.eventName === "Ate apple!"){
             gameInstance.snake.maxCells++;
             
             element = GAMEDATA[nextElement];
