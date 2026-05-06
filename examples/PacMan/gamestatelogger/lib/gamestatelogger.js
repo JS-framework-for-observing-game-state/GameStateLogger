@@ -40,7 +40,8 @@ export class GameStateLogger {
       };
 
       this.eventLog.push(Event);
-       // Array is flushed and data sent, every time the array length exceeds flushSize
+
+      // Array is flushed and data sent, every time the array length exceeds flushSize
       if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
@@ -66,7 +67,8 @@ export class GameStateLogger {
       };
 
       this.eventLog.push(Event); 
-       // Array is flushed and data sent, every time the array length exceeds flushSize
+      
+      // Array is flushed and data sent, every time the array length exceeds flushSize
       if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
@@ -86,28 +88,13 @@ export class GameStateLogger {
       };
 
       this.eventLog.push(Event); 
+      
       // Array is flushed and data sent, every time the array length exceeds flushSize
       if (this.eventLog.length > this.flushSize) {
          this.postData();
       }
    }
 
-   /**
-    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
-    **/
-   logGameResult(event, time, points = "n/a") {
-      const Event = {
-            ID: this.ID,
-            gameEnd: true,
-            eventName: event,
-            eventTime: time,
-            points: points
-      };
-
-      this.eventLog.push(Event); 
-      
-      this.postData();
-   }
    
    /**
     * Logs the location of any element e.g. {x: coord, y: coord}
@@ -121,6 +108,7 @@ export class GameStateLogger {
       };
 
       this.eventLog.push(Event); 
+      
       // Array is flushed and data sent, every time the array length exceeds flushSize
       if (this.eventLog.length > this.flushSize) {
          this.postData();
@@ -144,6 +132,25 @@ export class GameStateLogger {
          this.postData();
       }
    }
+
+
+   /**
+    * Log a game result, such as tie, game over, X wins. Eventname can be e.g. "Game Over"
+    **/
+   logGameResult(event, time, points = "n/a") {
+      const Event = {
+            ID: this.ID,
+            gameEnd: true,
+            eventName: event,
+            eventTime: time,
+            points: points
+      };
+
+      this.eventLog.push(Event); 
+      
+      this.postData();
+   }
+
 
    /**
     * Logs when a user is closing the game window, only used when a

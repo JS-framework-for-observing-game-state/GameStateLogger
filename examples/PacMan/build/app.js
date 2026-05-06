@@ -1217,7 +1217,7 @@ class GameCoordinator {
       this.firstGame = false;
       this.init();
     }
-    this.GameStateLogger.logKeyDownEvent("Game started", "startbutton", this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logClickEvent("Click", "startbutton", this.gameEngine.frameId, this.points);
     
     this.startGameplay(true);
   }
@@ -1777,7 +1777,7 @@ class GameCoordinator {
   }
 
   handleGameEnded (event) {
-    this.GameStateLogger.logWindowClose("Session ended", this.gameEngine.frameId, this.points, this.highScore)
+    this.GameStateLogger.logWindowClose("Session ended", this.gameEngine.frameId, this.points);
     this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
   }
   /**
@@ -1853,7 +1853,7 @@ class GameCoordinator {
    * @param {Event} e - The direction of the swipe
    */
   handleSwipe(e) {
-    this.GameStateLogger.logClickEvent(e.detail, this.gameEngine.frameId, this.points);
+    this.GameStateLogger.logClickEvent("Swipe", e.detail, this.gameEngine.frameId, this.points);
 
     const { direction } = e.detail;
     this.changeDirection(direction);
@@ -1990,7 +1990,7 @@ class GameCoordinator {
    * Displays GAME OVER text and displays the menu so players can play again
    */
   gameOver() {
-    this.GameStateLogger.logGameResult("Game Over", this.gameEngine.frameId, this.points, this.highScore);
+    this.GameStateLogger.logGameResult("Game Over", this.gameEngine.frameId, this.points);
     this.GameStateLogger.ID = Date.now().toString(36) + Math.random().toString(36);
     localStorage.setItem('highScore', this.highScore);
 
@@ -2126,7 +2126,7 @@ class GameCoordinator {
                   new Timer(() => {
                     this.mazeCover.style.visibility = 'hidden';
                     this.level += 1;
-                    this.GameStateLogger.logNewLevel(this.level, this.gameEngine.frameId, this.points);
+                    this.GameStateLogger.logNewLevel(`Level changed to: ${this.level}`, this.gameEngine.frameId, this.points);
                     this.allowKeyPresses = true;
                     this.entityList.forEach((entity) => {
                       const entityRef = entity;

@@ -48,11 +48,10 @@ function loop() {
   count = 0;
   context.clearRect(0,0,canvas.width,canvas.height);
 
-  console.log("Before moving snake at time: " + timeStep);
   // move snake by it's velocity
   snake.x += snake.dx;
   snake.y += snake.dy;
-  console.log("After moving snake at time: " + timeStep);
+  
   // wrap snake position horizontally on edge of screen
   if (snake.x < 0) {
     snake.x = canvas.width - grid;
@@ -75,9 +74,6 @@ function loop() {
   // remove cells as we move away from them
   if (snake.cells.length > snake.maxCells) {
     snake.cells.pop();
-/*      gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} after moving`,
-        {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
-      console.log(`Time: ${timeStep}, Snake's position after moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
   }
 
 
@@ -131,14 +127,6 @@ function loop() {
 
 // listen to keyboard events to move the snake
 document.addEventListener('keydown', function(e) {
-    /*gamestatelogger.logLocation(undefined, `Position of Snake's head at timeStep ${timeStep} before moving`,
-      {"x": (snake.cells[0].x), "y": (snake.cells[0].y)}, timeStep);
-    console.log(`Time: ${timeStep}, Snake's position before moving: x: ${snake.cells[0].x}, y: ${snake.cells[0].y}.`);*/
-  // prevent snake from backtracking on itself by checking that it's
-  // not already moving on the same axis (pressing left while moving
-  // left won't do anything, and pressing right while moving left
-  // shouldn't let you collide with your own body)
-
   // left arrow key
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;

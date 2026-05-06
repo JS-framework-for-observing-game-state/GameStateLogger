@@ -39,7 +39,7 @@ window.addEventListener('beforeunload', () => {
 for(let i = 0; i < squares.length; i++){
     squares[i].addEventListener('click', () => {
 	if(someoneWon) return;
-        gamestatelogger.logClickEvent("Click", i, timestep);
+        gamestatelogger.logClickEvent("Click", i.toString(), timestep);
         if(squares[i].textContent !== ''){
             return
         }
@@ -97,7 +97,7 @@ function restartButton() {
         squares[i].textContent = ""
         squaresArr[i] = '';
     }
-    gamestatelogger.logClickEvent("Click", 'restartButton', timestep)
+    gamestatelogger.logClickEvent("Click", "restartButton", timestep)
     timestep++;
 
     endMessage.textContent=`X's turn!`
