@@ -132,7 +132,7 @@ const dir = "../server/JSONfiles/";
 
 let filesArr = fs.readdirSync(dir);
 
-let noOfFiles = 1000;
+let noOfFiles = 1;
 
 if (noOfFiles > filesArr.length) {
     throw new Error("noOfFiles exceeds actual number of files in the directory!");
@@ -158,7 +158,7 @@ for(var i = 0; i < noOfFiles; i++) {
                 break;
             }
 
-            if(element != null && element.level === "Ate apple!"){
+            if(element != null && element.eventName === "Ate apple!"){
                 gameInstance.snake.maxCells++;
                 /* Remember that the game progresses when eating an apple, 
                usually happens in the end of the main loop. */

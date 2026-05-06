@@ -5,6 +5,7 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
+
 app.use(cors());
 
 app.listen(PORT, () => {
@@ -27,17 +28,15 @@ try {
          // Create string filepath associated with the event.
          var filePath = dir + "/" + v.ID + ".json";
          
-         // If file does not exist, create it with the start bracket for containing objects
          if (!fs.existsSync(filePath)) {
-            fs.writeFileSync(filePath, "", { flag: 'w' });
+            fs.writeFileSync(filePath, "[", { flag: 'w' });
          }
 
-         // If event ends a session, write the final data and '}' to the file and close it.
          if (v.gameEnd || v.eventName === "Session ended") {
             try {
                let data = JSON.stringify(v);
 
-               fs.writeFileSync(filePath, data, {flag: "a+"});
+               fs.writeFileSync(filePath, data + "]", {flag: "a+"});
             } catch (e) {
                console.log(`Could not write to file, with error: ${e}`);
             }
@@ -46,7 +45,7 @@ try {
             try {
                let data = JSON.stringify(v);
 
-               fs.writeFileSync(filePath, data, {flag: "a+"});
+               fs.writeFileSync(filePath, data + ",", {flag: "a+"});
             } catch (e) {
                console.log(`Could not write to file, with error: ${e}`);
             }
