@@ -147,12 +147,10 @@ for(var i = 0; i < noOfFiles; i++) {
     var maxTime = GAMEDATA[GAMEDATA.length - 1].eventTime;
 
     var element = GAMEDATA[0];
-    console.log(GAMEDATA[0])
     var nextElement = 1;
 
     for(var j = 0; j <= maxTime; j++) {
         if(j === element.eventTime){
-            console.log(element.eventName + element.eventTime);
             if (element.eventTime === maxTime) {
                 gameInstance.mainLoop();
                 valid = gameInstance.collisionSnake() === "Dead";
