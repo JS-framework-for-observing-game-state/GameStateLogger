@@ -67,7 +67,7 @@ To create an instance of the GameStateLogger for use in your game file, create a
 >**flushSize \[Type: Number\]:** A Number that lets the user define how often the eventLog should be sent to the server and flushed.
 
 > [!NOTE]
-> GameStateLogger has an in-built function for [auto generating near random IDs](https://stackoverflow.com/questions/3231459/how-can-i-create-unique-ids-with-javascript). The function utilizes UNIX time and a random Number to generated a random ID string:
+> GameStateLogger has an in-built function for [auto generating near random IDs](https://stackoverflow.com/questions/3231459/how-can-i-create-unique-ids-with-javascript). The function utilizes UNIX time and a random Number to generate a random ID string:
 > `Date.now().toString(36) + Math.random().toString(36))`  
 > If no ID argument is given when instantiating the GameStateLogger, such a random ID will be generated.
 
