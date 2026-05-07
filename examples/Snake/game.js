@@ -10,6 +10,11 @@ let gamestatelogger = new GameStateLogger(10);
 var grid = 16;
 var count = 0;
 var timeStep = 0;
+
+window.addEventListener('beforeunload', () => {
+    gamestatelogger.logWindowClose("Session ended", timeStep);
+});
+
 var snake = {
   x: 160,
   y: 160,
@@ -138,6 +143,7 @@ document.addEventListener('keydown', function(e) {
     snake.dy = -grid;
     snake.dx = 0;
     gamestatelogger.logKeyDownEvent(38, timeStep, snake.maxCells);
+  
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
@@ -153,6 +159,7 @@ document.addEventListener('keydown', function(e) {
   }
   timeStep++;
 });
+
 
 // start the game
 requestAnimationFrame(loop);
