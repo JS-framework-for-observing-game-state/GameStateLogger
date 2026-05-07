@@ -137,7 +137,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased 
 
 `logLocation(...)` is used to log the location of any game elements the user wishes, at the point of time in game they wish. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.        
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snake's head", location:{x:160, y:140}, "eventTime":320}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snake's head", location:{"x":160, "y":140}, "eventTime":320}`
 
 
 ### logRandomSeed(event, randomSeed, time)
