@@ -148,7 +148,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snak
 
 `logRandomSeed(...)` is used to log any random seeds that may be present in the game, when they are generated. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Apple x-value", randomSeed:85, "eventTime":320}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Apple x-value", "randomSeed":85, "eventTime":320}`
 
 
 ### logGameResult(event, time, points = "n/a")
