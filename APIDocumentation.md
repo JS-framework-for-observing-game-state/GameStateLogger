@@ -101,7 +101,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPres
 ### logClickEvent(event, location, time, points = "n/a")
 
 >**event \[Type: String\]:** A string with a description of the event, such as "Click" or "Button click".  
->**location \[Type: Object || String || Number\]:** The location of the click. Recommended formats:  
+>**location \[Type: Object, String or Number\]:** The location of the click. Recommended formats:  
 >Object of the form: {x : xcoord, y: ycoord}.  
 >A String containing the ID of an HTML element that was clicked.  
 >A String or Number identifier of a clickable element in your game.  
