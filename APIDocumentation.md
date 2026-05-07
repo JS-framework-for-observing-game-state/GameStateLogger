@@ -126,7 +126,7 @@ This lets you keep track of at which level following logged events happened.
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", levelChanged:true, "eventTime":320, "points":5}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", "levelChanged":true, "eventTime":320, "points":5}`
 
 
 ### logLocation(event, location, time)
