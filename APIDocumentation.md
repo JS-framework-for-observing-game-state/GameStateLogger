@@ -27,7 +27,7 @@ This requirement is to enable precise analysis of when logged events have happen
 It is also a crucial requirement for allowing to utilize replay scripts of the logged data.
 It is recommended to implement a logical time system in the game, and re-use this logical time system in any replay script. [Read more about logical time here.](https://www.geeksforgeeks.org/distributed-systems/logical-clock-in-distributed-system/)
 Choosing a logical time or real time is up to the user of the framework, however logical time is encouraged for precise logging.
-The recommended approach is a tick or timestep based system, wherein each operation in your game that alters game state increments the total timestep by one.
+The recommended approach is a timestep based system, wherein each operation in your game that alters game state increments the total timestep by one.
 
 > [!NOTE]  
 > JavaScript requires that any file that uses a module is also a module itself.
