@@ -74,7 +74,7 @@ To create an instance of the GameStateLogger for use in your game file, create a
 ## Available functions
 ### logKeyDownEvent(key, time, points = "n/a")
 
->**key \[Type: String or Number\]:** A String with the name of the key pressed or a Number of the ASCII key corresponding to the key pressed. Example: "ArrowDown", "w" or 37.  
+>**key \[Type: String or Number\]:** A String with the name of the key pressed or a Number of the key code corresponding to the key pressed. Example: "ArrowDown", "w" or 37.  
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
@@ -87,7 +87,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPr
 
 ### logKeyUpEvent(key, time, points = "n/a")
 
->**key \[Type: String or Number\]:** A String with the name of the key pressed or a Number of the ASCII key corresponding to the key pressed. Example: "ArrowDown", "w" or 37.  
+>**key \[Type: String or Number\]:** A String with the name of the key pressed or a Number of the key code corresponding to the key pressed. Example: "ArrowDown", "w" or 37.  
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
