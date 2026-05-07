@@ -82,7 +82,7 @@ To create an instance of the GameStateLogger for use in your game file, create a
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"keyDown", "keyPressed":40, "eventTime":171, "points":4}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPressed":40, "eventTime":171, "points":4}`
 
 
 ### logKeyUpEvent(key, time, points = "n/a")
@@ -95,7 +95,7 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"keyDown", "keyPress
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"keyUp", "keyPressed":40, "eventTime":171, "points":4}`   
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPressed":40, "eventTime":171, "points":4}`   
 
 
 ### logClickEvent(event, location, time, points = "n/a")
@@ -108,11 +108,11 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"keyUp", "keyPressed
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
-`logClickEvent(...)` is used to log when a user clicks with their mouse.
+`logClickEvent(...)` is used to log when a user clicks with their mouse. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.  
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"Click", "location":"game-start", "eventTime":3, "points":0}`   
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Click", "location":"game-start", "eventTime":3, "points":0}`   
 
 
 ### logNewLevel(event, time, points = "n/a") 
@@ -121,12 +121,12 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"Click", "location":
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
-`logNewLevel(...)` is used to logging when a user changes levels, if your game has a level system. 
+`logNewLevel(...)` is used to logging when a user changes levels, if your game has a level system. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` and `levelChanged:true`.  
 This lets you keep track of at which level following logged events happened.
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"Level increased to 2", levelChanged:true, "eventTime":320, "points":5}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", levelChanged:true, "eventTime":320, "points":5}`
 
 
 ### logLocation(event, location, time)
@@ -135,9 +135,9 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"Level increased to 
 >**location \[Object, String or Number\]:** An Object, String or Number that describes a location. If using Object, notation could i.e. be: {x: ..., y: ...}.  
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 
-`logLocation(...)` is used to log the location of any game elements the user wishes, at the point of time in game they wish.    
+`logLocation(...)` is used to log the location of any game elements the user wishes, at the point of time in game they wish. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.        
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"Position of Snake's head", location:{x:160, y:140}, "eventTime":320}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snake's head", location:{x:160, y:140}, "eventTime":320}`
 
 
 ### logRandomSeed(event, randomSeed, time)
@@ -146,9 +146,9 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"Position of Snake's
 >**randomSeed \[Number\]:** The random seed generated.  
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 
-`logRandomSeed(...)` is used to log any random seeds that may be present in the game, when they are generated.    
+`logRandomSeed(...)` is used to log any random seeds that may be present in the game, when they are generated. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"Apple x-value", randomSeed:85, "eventTime":320}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Apple x-value", randomSeed:85, "eventTime":320}`
 
 
 ### logGameResult(event, time, points = "n/a")
@@ -157,13 +157,13 @@ Example logging: `{"ID":"your_id_or_random_id", "eventName":"Apple x-value", ran
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
-`logGameResult(...)` is used to log intermediate game results, such as game overs, ties, or wins of a specific round.
+`logGameResult(...)` is used to log intermediate game results, such as game overs, ties, or wins of a specific round. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` and `gameEnd: true`.  
 
 Note that a separate function exists for logging when a user closes their window, [logWindowClose(event, time, points = "n/a")](#logwindowcloseevent-time-points--na)  
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "gameEnd":true, "eventName":"Game over!", "eventTime":890, "points":7}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "gameEnd":true, "eventName":"Game over!", "eventTime":890, "points":7}`
 
 
 ### logWindowClose(event, time, points = "n/a")
@@ -172,9 +172,9 @@ Example logging: `{"ID":"your_id_or_random_id", "gameEnd":true, "eventName":"Gam
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
-`logWindowClose(...)` is used to log that the window has been closed. This function is intended to be used when a game session is completely ended.
+`logWindowClose(...)` is used to log that the window has been closed. This function is intended to be used when a game session is completely ended. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.   
 A separate function exists for logging events such as Game Overs, see [logGameResult(event, time, points = "n/a")](#loggameresultevent-time-points--na).  
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"your_id_or_random_id", "eventName":"Window closed", "eventTime":890, "points":7}`
+Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Window closed", "eventTime":890, "points":7}`
