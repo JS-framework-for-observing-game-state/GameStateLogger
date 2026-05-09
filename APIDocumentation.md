@@ -82,7 +82,7 @@ To create an instance of the GameStateLogger for use in your game file, create a
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPressed":40, "eventTime":171, "points":4}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPressed":40, "eventTime":171, "points":4}`
 
 
 ### logKeyUpEvent(key, time, points = "n/a")
@@ -95,7 +95,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPr
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPressed":40, "eventTime":171, "points":4}`   
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPressed":40, "eventTime":171, "points":4}`   
 
 
 ### logClickEvent(event, location, time, points = "n/a")
@@ -112,7 +112,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPres
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Click", "location":"game-start", "eventTime":3, "points":0}`   
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Click", "location":"game-start", "eventTime":3, "points":0}`   
 
 
 ### logNewLevel(event, time, points = "n/a") 
@@ -126,7 +126,7 @@ This lets you keep track of at which level following logged events happened.
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", "levelChanged":true, "eventTime":320, "points":5}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", "levelChanged":true, "eventTime":320, "points":5}`
 
 
 ### logLocation(event, location, time)
@@ -137,7 +137,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased 
 
 `logLocation(...)` is used to log the location of any game elements the user wishes, at the point of time in game they wish. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.        
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snake's head", location:{"x":160, "y":140}, "eventTime":320}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snake's head", location:{"x":160, "y":140}, "eventTime":320}`
 
 
 ### logRandomSeed(event, randomSeed, time)
@@ -148,7 +148,7 @@ Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Position of Snak
 
 `logRandomSeed(...)` is used to log any random seeds that may be present in the game, when they are generated. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Apple x-value", "randomSeed":85, "eventTime":320}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Apple x-value", "randomSeed":85, "eventTime":320}`
 
 
 ### logGameResult(event, time, points = "n/a")
@@ -163,7 +163,7 @@ Note that a separate function exists for logging when a user closes their window
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "gameEnd":true, "eventName":"Game over!", "eventTime":890, "points":7}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "gameEnd":true, "eventName":"Game over!", "eventTime":890, "points":7}`
 
 
 ### logWindowClose(event, time, points = "n/a")
@@ -177,4 +177,4 @@ A separate function exists for logging events such as Game Overs, see [logGameRe
 
 `points` default to a value of “n/a” if no parameter is given.   
   
-Example logging: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Window closed", "eventTime":890, "points":7}`
+Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Window closed", "eventTime":890, "points":7}`
