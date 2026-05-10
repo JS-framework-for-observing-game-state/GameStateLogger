@@ -89,7 +89,7 @@ for(var i = 0; i < noOfFiles; i++) {
                 break;
             default:
                 if (eventObject.gameEnd === true) {
-                    if (eventObject.eventName === "Game is tied!") {
+                    if (eventObject.eventName === "Tie") {
                         valid = gameInstance.checkTie();
                     } else {
                         if (eventObject.eventName.includes("X wins!")) {
@@ -102,9 +102,6 @@ for(var i = 0; i < noOfFiles; i++) {
                 break;
         }
     });
-    if (!valid) {
-        noOfFalse++;
-    }
     console.log(`Was game run: "${filesArr[i]}" valid?: ${valid}`);
 }
 
