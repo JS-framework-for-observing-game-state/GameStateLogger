@@ -123,7 +123,7 @@ function loop() {
         apple.y = 320;
         count = 0;
         timeStep = 0;
-        gamestatelogger.ID = (Date.now().toString(36) + Math.random().toString(36));
+        gamestatelogger.changeID();
       }
     }
   });

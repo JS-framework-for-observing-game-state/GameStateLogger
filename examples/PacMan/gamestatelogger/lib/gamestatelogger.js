@@ -170,6 +170,9 @@ export class GameStateLogger {
       this.postData();
    }
 
+   changeID(newID = (Date.now().toString(36) + Math.random().toString(36))) {
+      this.ID = newID;
+   }
 
    /**
     * Send logged events to the server via. POST request
