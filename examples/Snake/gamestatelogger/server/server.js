@@ -32,7 +32,7 @@ try {
             fs.writeFileSync(filePath, "[", { flag: 'w' });
          }
 
-         if (v.gameEnd || v.eventName === "Session ended") {
+         if (v.gameEnd) {
             try {
                let data = JSON.stringify(v);
 
