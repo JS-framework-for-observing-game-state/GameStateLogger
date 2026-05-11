@@ -216,5 +216,3 @@ for(var i = 0; i < noOfFiles; i++) {
         }
     }
 }
-
-console.log(`Time taken to replay ${noOfFiles} games: ${endTime - startTime} milliseconds`);

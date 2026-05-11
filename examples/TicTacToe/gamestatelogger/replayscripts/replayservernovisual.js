@@ -1,7 +1,6 @@
 import { error } from 'console';
 import fs from 'fs';
 
-const startTime = performance.now();
 class TicTacToe {
     constructor () {
         this.squaresArr = ['', '', '',
@@ -104,6 +103,3 @@ for(var i = 0; i < noOfFiles; i++) {
     });
     console.log(`Was game run: "${filesArr[i]}" valid?: ${valid}`);
 }
-
-const endTime = performance.now();
-console.log(`Time taken to replay ${noOfFiles} events: ${endTime - startTime} milliseconds`);
