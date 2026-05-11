@@ -52,7 +52,7 @@ try {
          }   
       });
       
-      res.json({ status : "ok"});
+      res.status(200);
    });
 } catch (e) {
    console.log("Post error: " + e);
