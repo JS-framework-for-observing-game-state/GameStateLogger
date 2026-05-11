@@ -87,7 +87,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 
 ### logKeyUpEvent(key, time, points = "n/a")
 
->**key \[Type: String or Number\]:** A String with the name of the key pressed or a Number of the key code corresponding to the key pressed. Example: "ArrowDown", "w" or 37.  
+>**key \[Type: String or Number\]:** A String with the name of the key released or a Number of the key code corresponding to the key released. Example: "ArrowDown", "w" or 37.  
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
@@ -172,7 +172,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 >**time \[Type: Number\]:** The time at which an event has occurred. Consistency in time counting should be kept across all logs.  
 >_OPTIONAL:_ **points \[Type: Number\]:** A number representing the current number of points the player has.  
 
-`logWindowClose(...)` is used to log that the browser window has been closed. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.   
+`logWindowClose(...)` is used to log that the browser window has been closed. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` and `gameEnd: true`.   
 A separate function exists for logging events such as Game Overs, see [logGameResult(event, time, points = "n/a")](#loggameresultevent-time-points--na).  
 
 `points` default to a value of “n/a” if no parameter is given.   

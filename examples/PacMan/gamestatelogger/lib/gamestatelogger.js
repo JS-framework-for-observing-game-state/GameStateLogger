@@ -5,7 +5,6 @@ export class GameStateLogger {
       this.ID = ID;
    }
 
-
    /**
     * Logs key down presses
     **/
@@ -159,6 +158,7 @@ export class GameStateLogger {
    logWindowClose(event, time, points = "n/a") {
       const Event = {
             ID: this.ID,
+            gameEnd: true,
             eventName: event,
             eventTime: time,
             points: points
