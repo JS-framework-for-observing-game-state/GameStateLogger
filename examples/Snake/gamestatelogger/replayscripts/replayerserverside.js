@@ -1,5 +1,6 @@
 import { error } from 'console';
 import fs from 'fs';
+
 class Snake {
     constructor() {
         this.canvasW = 400;
@@ -138,7 +139,6 @@ if (noOfFiles > filesArr.length) {
     throw new Error("noOfFiles exceeds actual number of files in the directory!");
 }
 
-const startTime = performance.now();
 for(var i = 0; i < noOfFiles; i++) {
     console.log(`Replaying file no. ${i}, ID: ${filesArr[i]}`);
     let path = dir + filesArr[i];
@@ -154,7 +154,7 @@ for(var i = 0; i < noOfFiles; i++) {
             if (element.eventTime === maxTime) {
                 gameInstance.mainLoop();
                 valid = gameInstance.collisionSnake() === "Dead";
-                console.log("Game valid? " + valid);
+                console.log(`Game ${i + 1} valid? ${valid}`);
                 break;
             }
 
@@ -216,6 +216,3 @@ for(var i = 0; i < noOfFiles; i++) {
         }
     }
 }
-
-const endTime = performance.now();
-console.log(`Time taken to replay ${noOfFiles} games: ${endTime - startTime} milliseconds`);

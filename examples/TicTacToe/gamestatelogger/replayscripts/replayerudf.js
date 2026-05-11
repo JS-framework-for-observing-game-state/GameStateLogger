@@ -1,8 +1,8 @@
 class TicTacToe {
     constructor () {
         this.squaresArr = ['', '', '',
-                            '', '', '',
-                            '', '', ''];
+                        '', '', '',
+                        '', '', ''];
         this.players = ['X', 'O']
         this.currentPlayer = this.players[0]
         this.someoneWon = false;
@@ -17,8 +17,8 @@ class TicTacToe {
             [2, 4, 6]
         ]
     }
-    
-    fillSquare(i) {
+
+fillSquare(i) {
         this.squaresArr[i] = this.currentPlayer;
         if (!this.checkWin(this.currentPlayer) && !this.checkTie()) {
             this.currentPlayer = (this.currentPlayer === this.players[0]) ? this.players[1] : this.players[0];
@@ -70,7 +70,7 @@ GAMEDATA.forEach((eventObject) => {
             break;
         default:
             if (eventObject.gameEnd === true) {
-                if (eventObject.eventName === "Game is tied!") {
+                if (eventObject.eventName === "Tie") {
                     valid = gameInstance.checkTie();
                 } else {
                     if (eventObject.eventName.includes("X wins!")) {

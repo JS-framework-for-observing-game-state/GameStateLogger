@@ -117,8 +117,6 @@ for(var i = 0; i <= maxTime; i++) {
         if (element.eventTime === maxTime) {
             gameInstance.mainLoop();
             valid = gameInstance.collisionSnake() === "Dead";
-            // Below line removed when integrated with database.
-            console.log("Was game run valid?: " + valid);
             break;
         }
 
@@ -175,4 +173,4 @@ for(var i = 0; i <= maxTime; i++) {
     }
 }
 
-//return valid;
+return valid;
