@@ -71,7 +71,7 @@ function checkWin(currentPlayer) {
         if(squaresArr[a] === currentPlayer && squaresArr[b] === currentPlayer
             && squaresArr[c] === currentPlayer){
             gamestatelogger.logGameResult(`Game over! ${currentPlayer} wins!`, timestep)
-            gamestatelogger.ID = Date.now().toString(36) + Math.random().toString(36);
+            gamestatelogger.changeID();
             timestep++;
             return true
         }
@@ -86,7 +86,7 @@ function checkTie(){
         }
     }
     gamestatelogger.logGameResult("Tie", timestep);
-    gamestatelogger.ID = Date.now().toString(36) + Math.random().toString(36);
+    gamestatelogger.changeID();
     timestep++;
     return true
 }
