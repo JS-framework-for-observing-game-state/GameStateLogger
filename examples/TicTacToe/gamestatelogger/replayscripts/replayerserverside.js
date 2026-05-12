@@ -24,40 +24,6 @@ class TicTacToe {
             [0, 4, 8],
             [2, 4, 6]
         ]
-
-        this.timestep = 0;
-    }
-
-    game () {
-        restart.addEventListener('click', () => {
-            restartGame();
-        })
-
-        for(let i = 0; i < this.squares.length; i++){
-            this.squares[i].addEventListener('click', () => {
-            if(this.someoneWon) return;
-                if(this.squares[i].textContent !== ''){
-                    return
-                }
-                fillSquare(i);
-                if(checkWin(this.currentPlayer)) {
-                this.someoneWon = true;
-                    this.endMessage.textContent=`Game over! ${currentPlayer} wins!`
-                    return
-                }
-                if(checkTie()) {
-                this.someoneWon = true;
-                    this.endMessage.textContent= `Game is tied!` 
-                    return
-                }
-                if(this.currentPlayer == this.players[0]) {
-                    this.endMessage.textContent= `X's turn!`
-                } else {
-                    this.endMessage.textContent= `O's turn!`
-                }
-                this.timestep++;     
-            })   
-        }
     }
     
     fillSquare(i) {
@@ -74,7 +40,6 @@ class TicTacToe {
             if(this.squaresArr[a] === currentPlayer
                 && this.squaresArr[b] === currentPlayer
                 && this.squaresArr[c] === currentPlayer){
-                this.timestep++;
                 this.endMessage.textContent=`Game over! ${currentPlayer} wins!`
                 return true
             }
@@ -88,7 +53,6 @@ class TicTacToe {
                 return false;
             }
         }
-        this.timestep++;
         return true
     }
 
@@ -98,7 +62,6 @@ class TicTacToe {
             this.squares[i].textContent = ""
             this.squaresArr[i] = '';
         }
-        this.timestep++;
 
         this.endMessage.textContent=`X's turn!`
         this.currentPlayer = this.players[0]
