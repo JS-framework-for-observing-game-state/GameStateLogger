@@ -18,6 +18,7 @@ GameStateLogger is a lightweight framework that lets the user determine how ma
 - [logRandomSeed(event, randomSeed, time)](#lograndomseedevent-randomseed-time)  
 - [logGameResult(event, time, points = "n/a")](#loggameresultevent-time-points--na)
 - [logWindowClose(event, time, points = "n/a")](#logwindowcloseevent-time-points--na)  
+- [changeID(newID)](#changeidnewid)
   
 ## Importing GameStateLogger to your game
 
@@ -80,7 +81,7 @@ To create an instance of the GameStateLogger for use in your game file, create a
 
 `logKeyDownEvent(...)` is used to log when a user presses a key. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` as well as `eventName: "keyDown"`.  
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyDown", "keyPressed":40, "eventTime":171, "points":4}`
 
@@ -93,7 +94,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 
 `logKeyUpEvent(...)` is used to log when a user releases a key. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` as well as `eventName: "keyUp"`.  
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"keyUp", "keyPressed":40, "eventTime":171, "points":4}`   
 
@@ -110,7 +111,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 
 `logClickEvent(...)` is used to log when a user clicks with their mouse. Note that the logged event automatically comes with a field `ID: your_id_or_random_id`.  
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Click", "location":"game-start", "eventTime":3, "points":0}`   
 
@@ -124,7 +125,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 `logNewLevel(...)` is used to logging when a user changes levels, if your game has a level system. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` and `levelChanged:true`.  
 This lets you keep track of at which level following logged events happened.
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Level increased to 2", "levelChanged":true, "eventTime":320, "points":5}`
 
@@ -161,7 +162,7 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 
 Note that a separate function exists for logging when a user closes their window, [logWindowClose(event, time, points = "n/a")](#logwindowcloseevent-time-points--na)  
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "gameEnd":true, "eventName":"Game over!", "eventTime":890, "points":7}`
 
@@ -175,6 +176,15 @@ Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16"
 `logWindowClose(...)` is used to log that the browser window has been closed. Note that the logged event automatically comes with a field `ID: your_id_or_random_id` and `gameEnd: true`.   
 A separate function exists for logging events such as Game Overs, see [logGameResult(event, time, points = "n/a")](#loggameresultevent-time-points--na).  
 
-`points` default to a value of “n/a” if no parameter is given.   
+`points` defaults to a value of “n/a” if no parameter is given.   
   
 Example of a logged event, using this function: `{"ID":"mopt0t2u0.zmgudk1bgkl16", "eventName":"Window closed", "eventTime":890, "points":7}`
+  
+  
+### changeID(newID)  
+
+>**ID \[Type: String or Number\]:** An identifier to separate game logs.
+
+`changeID(...)` is used to change the identifier associated with every game log. If i.e. each game run should be separate from each other, `changeID(...)` should be called at every game ending point in the code.
+
+`newID` defaults to a value computated by `Date.now().toString(36) + Math.random().toString(36)`, if no argument is given.
